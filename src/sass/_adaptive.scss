@@ -1,0 +1,211 @@
+@media screen and (min-width: 1921px) {
+
+}
+
+//  1200px - 1229px
+@media screen and (max-width: 1229px) {
+
+}
+
+//  1024px - 1199px
+@media screen and (max-width: 1199px) {
+
+}
+
+//  751px - 1023px
+@media screen and (max-width: 1023px) {
+    .header__menu {
+        display: none;
+    }
+
+    .header__phone {
+        display: none;
+    }
+
+    .burger {
+        display: flex;
+    }
+
+    .header__location {
+        margin-right: 45px;
+    }
+
+    .header__email {
+        margin-right: 66px;
+    }
+
+    .header__content-title {
+        font-size: 50px;
+        line-height: 62px;
+        max-width: 700px;
+        margin-bottom: 40px;
+    }
+
+    .header__content-subtitle {
+        font-size: 26px;
+        line-height: 32px;
+        max-width: 450px;
+        margin-bottom: 62px;
+    }
+
+    .header__content {
+        padding-top: 58px;
+    }
+
+    .swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+        bottom: 56px;
+    }
+
+    .logo {
+        width: 92px;
+    }
+}
+
+//  661px - 750px
+@media screen and (max-width: 750px) {
+    .header {
+        &__location {
+            display: none;
+        }
+
+        &__email {
+            display: none;
+        }
+    }
+}
+
+//  580px - 660px
+@media screen and (max-width: 660px) {
+    .header {
+        &__top {
+            height: 90px;
+        }
+
+        &__content {
+            &-title {
+                font-size: 28px;
+                line-height: 34px;
+                max-width: 290px;
+                margin-bottom: 23px;
+            }
+
+            &-subtitle {
+                font-size: 16px;
+                line-height: 19px;
+                max-width: 290px;
+                margin-bottom: 28px;
+            }
+        }
+    }
+
+    .logo {
+        width: 57px;
+    }
+
+    // стили для кнопок
+    .btn {
+        padding: 19px 42px;
+
+        &__text {
+            font-size: 18px;
+        }
+    }
+
+    .swiper-pagination-bullet {
+        width: 14px;
+        height: 14px;
+        border: 2px solid $color-white;
+    }
+
+    .swiper-pagination-bullet-active {
+
+        &::before {
+            top: 3px;
+            left: 3px;
+            width: 8px;
+            height: 8px;
+        }
+    }
+
+    // отступы между dots
+    .swiper-horizontal>.swiper-pagination-bullets .swiper-pagination-bullet, .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet {
+        margin: 0 var(--swiper-pagination-bullet-horizontal-gap, 8px);
+    }
+}
+
+//  480px - 579px
+@media screen and (max-width: 579px) {
+
+}
+
+//  480px - 499px
+@media screen and (max-width: 499px) {
+
+}
+
+//  320px - 479px
+@media screen and (max-width: 479px) {
+
+}
+
+// адаптив для высоты
+//  681px - 880px
+//@media screen and (max-height: 880px) {
+//    .header {
+//        height: 880px;
+//
+//        &__content {
+//            padding-top: 60px;
+//        }
+//    }
+//
+//    .swiper {
+//        height: 880px;
+//    }
+//
+//    .swiper-slide img {
+//        height: 880px;
+//    }
+//}
+
+//  320px - 680px
+//@media screen and (max-height: 680px) {
+//    .header {
+//        height: 680px;
+//
+//        &__content {
+//            padding-top: 20px;
+//
+//            &-title {
+//                margin-bottom: 20px;
+//            }
+//
+//            &-subtitle {
+//                margin-bottom: 25px;
+//            }
+//        }
+//    }
+//
+//    .swiper {
+//        height: 680px;
+//    }
+//
+//    .swiper-slide img {
+//        height: 680px;
+//    }
+//}
+
+//
+//@media (max-width: 376px) and (max-height: 685px) {
+//    .header {
+//        height: 100vh;
+//    }
+//
+//    .swiper {
+//        height: 100vh;
+//    }
+//
+//    .swiper-slide img {
+//        height: 100vh;
+//    }
+//}
