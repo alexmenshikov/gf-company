@@ -84,6 +84,10 @@
 		&__action {
 			order: 5;
 		}
+
+		&__info {
+			display: block;
+		}
 	}
 }
 
@@ -231,6 +235,10 @@
 			}
 
 			margin-bottom: 20px;
+		}
+
+		&__info {
+			width: 100%;
 		}
 	}
 
@@ -412,6 +420,24 @@
 
 				&:not(:last-child) {
 					margin-bottom: 11px;
+				}
+			}
+		}
+
+		&__info {
+			&-text {
+				font-size: 14px;
+				line-height: 17px;
+				color: $color-mobile-list;
+				padding-left: 64px;
+
+				&::before {
+					width: 50px;
+					top: 7px;
+				}
+
+				&:not(:last-child) {
+					margin-bottom: 18px;
 				}
 			}
 		}
