@@ -491,3 +491,205 @@ body {
 		}
 	}
 }
+
+.technologies {
+	&__wrapper {
+		padding: 90px 0;
+	}
+
+	&__title {
+		margin-bottom: 48px;
+	}
+
+	&__tabs {
+	}
+}
+
+.tabs {
+	display: flex;
+	flex-direction: column;
+
+	&__btn {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: flex-start;
+		margin: 0 auto;
+		// display: flex;
+		// flex-wrap: wrap;
+		// align-items: center;
+		// justify-content: space-between;
+		// width: 592px;
+		// margin: 0 auto;
+
+		&-item {
+			border: 1px solid $color-cream-two;
+			border-radius: 6px;
+			background-color: transparent;
+			color: $color-cream-two;
+			font-size: 18px;
+			padding: 14px 22px;
+			transition: all 0.3s linear;
+			cursor: pointer;
+			margin-bottom: 12px;
+
+			&:hover {
+				box-shadow: 0 0 8px 0 $color-cream-two;
+			}
+
+			&.active {
+				color: $color-btn-text;
+				background-color: $color-cream-two;
+			}
+
+			&:not(:last-child) {
+				margin-right: 12px;
+			}
+		}
+	}
+
+	&__content {
+		margin-top: 43px;
+
+		&-item {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+		}
+
+		&-list {
+			max-width: 525px;
+			margin-right: 25px;
+		}
+
+		&-preview {
+			flex-shrink: 0;
+			width: 455px;
+			position: relative;
+			margin-right: 120px;
+		}
+
+		&-info {
+			width: 40px;
+			height: 40px;
+			border-radius: 50%;
+			background-color: $color-cream-two;
+
+			position: absolute;
+
+			cursor: pointer;
+			transition: all 0.3s linear;
+
+			&::before {
+				content: url(../../images/plus.svg);
+				position: absolute;
+				left: 10px;
+				top: 10px;
+				width: 20px;
+				height: 20px;
+			}
+
+			&:hover {
+				box-shadow: 0 0 8px 0 $color-cream-two;
+				.tabs__content-hover {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		}
+
+		&-hover {
+			position: absolute;
+
+			background-color: $color-black-gray;
+			border-radius: 5px;
+			padding: 24px 28px;
+
+			opacity: 0;
+			transform: translateY(20px);
+			transition: all 0.3s linear;
+			box-sizing: border-box;
+		}
+	}
+}
+
+.marker {
+	&__one {
+		top: -50px;
+		right: 5px;
+
+		&-hover {
+			width: 217px;
+			top: -85px;
+			left: -90px;
+		}
+	}
+
+	&__two {
+		top: 10px;
+		left: 120px;
+
+		&-hover {
+			width: 223px;
+			top: -85px;
+			left: -92px;
+		}
+	}
+
+	&__three {
+		top: 104px;
+		left: 0px;
+
+		&-hover {
+			width: 103px;
+			top: -85px;
+			left: -32px;
+		}
+	}
+
+	&__four {
+		bottom: 96px;
+		right: 20px;
+
+		&-hover {
+			width: 200px;
+			top: -85px;
+			left: -78px;
+		}
+	}
+}
+
+.list {
+	&__item {
+		&-title {
+			font-family: "Gilroy-Semibold";
+			position: relative;
+			padding-left: 37px;
+			margin-bottom: 12px;
+			display: inline-block;
+
+			&::before {
+				// content: url(../../images/list-marker.svg);
+				content: "";
+				position: absolute;
+				width: 25px;
+				height: 25px;
+				top: -3px;
+				left: 0;
+				background-image: url("../../images/list-marker.svg");
+				background-size: 25px 25px;
+			}
+		}
+
+		&-text {
+			font-size: 18px;
+			line-height: 22px;
+			color: $color-mobile-list;
+			padding-left: 37px;
+		}
+
+		&:not(:last-child) {
+			margin-bottom: 27px;
+		}
+	}
+}
