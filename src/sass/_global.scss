@@ -581,7 +581,7 @@ body {
 			transition: all 0.3s linear;
 
 			&::before {
-				content: url(../../images/plus.svg);
+				content: url(../images/plus.svg);
 				position: absolute;
 				left: 10px;
 				top: 10px;
@@ -676,7 +676,7 @@ body {
 				height: 25px;
 				top: -3px;
 				left: 0;
-				background-image: url("../../images/list-marker.svg");
+				background-image: url("../images/list-marker.svg");
 				background-size: 25px 25px;
 			}
 		}
