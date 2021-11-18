@@ -78,9 +78,6 @@ const servicesTabs = () => {
 
 	const gridRow = document.querySelector(".services__items");
 
-	console.log(tabOne);
-	console.log(tabTwo);
-
 	tabOne.addEventListener("click", () => {
 		if (!tabOne.classList.contains("active") && !listOne.classList.contains("active")) {
 			tabOne.classList.toggle("active");
@@ -119,3 +116,59 @@ const servicesTabs = () => {
 };
 
 servicesTabs();
+
+const technologiesTabs = () => {
+	const jsTrigger = document.querySelectorAll(".js-tab-trigger");
+
+	jsTrigger.forEach((item) => {
+		item.addEventListener("click", () => {
+			let tabName = item.getAttribute("data-tab");
+
+			let tabContent = document.querySelector('.js-tab-content[data-tab="' + tabName + '"]');
+
+			document.querySelectorAll(".js-tab-content.active").forEach((item) => {
+				item.classList.remove("active");
+			});
+
+			tabContent.classList.add("active");
+
+			document.querySelectorAll(".js-tab-trigger.active").forEach((item) => {
+				item.classList.remove("active");
+			});
+
+			item.classList.add("active");
+		});
+	});
+};
+
+technologiesTabs();
+
+const technologiesAction = () => {
+	const plus = document.querySelectorAll(".tabs__content-info");
+
+	plus.forEach((item) => {
+		item.addEventListener("click", () => {
+			let plusInfo = item.querySelectorAll(".tabs__content-hover");
+
+			plusInfo.classList.add("active");
+		});
+	});
+
+	// if (window.addEventListener) {
+	// 	let once = false;
+	// 	window.addEventListener("touchstart", function () {
+	// 		if (!once) {
+	// 			once = true;
+	// 			plus.forEach((item) => {
+	// 				item.addEventListener("click", () => {
+	// 					let plusInfo = item.querySelectorAll(".tabs__content-hover");
+
+	// 					plusInfo.classList.add("active");
+	// 				});
+	// 			});
+	// 		}
+	// 	});
+	// }
+};
+
+technologiesAction();
