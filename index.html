@@ -7,19 +7,17 @@
 		<!-- title -->
 		<title>GF Company</title>
 
-		<!-- styles -->
-		<!--		<link rel="stylesheet" href="css/slick.css" />-->
-		<!--		<link rel="stylesheet" href="css/slick-theme.css" />-->
-
 		<!-- mobile support -->
 		<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-		<link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+		<!-- styles -->
+		<link rel="stylesheet" href="css/swiper-bundle.min.css" />
 		<link rel="stylesheet" href="css/main.min.css" />
 
-		<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" defer></script>
-
+		<!-- script -->
+		<script src="js/swiper-bundle.min.js" defer></script>
 		<script src="js/main.min.js" defer></script>
+
 		<!-- favicon -->
 		<!--		<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />-->
 	</head>
@@ -148,7 +146,7 @@
 								<img src="images/header-slider/slide-3.jpg" alt="slide-3" />
 							</div>
 						</div>
-						<div class="swiper-pagination"></div>
+						<div class="header__swiper-pagination"></div>
 					</div>
 				</div>
 			</header>
@@ -224,6 +222,7 @@
 					</div>
 				</section>
 
+				<!-- Раздел с технологиями -->
 				<section id="technologies" class="technologies">
 					<div class="container">
 						<div class="technologies__wrapper">
@@ -467,6 +466,161 @@
 										</ul>
 									</div>
 								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Галерея с проектами -->
+				<section id="projects" class="projects">
+					<div class="container">
+						<div class="projects__wrapper">
+							<h3 class="projects__title title-h3">Типовые проекты домов</h3>
+
+							<!-- Общий контейнер для табов -->
+							<div class="projects__tabs tabs">
+								<!-- Контейнер с вкладками -->
+								<div class="tabs__btn">
+									<div class="tabs__btn-item tab-projects-btn active" data-tab="1">Все дома</div>
+									<div class="tabs__btn-item tab-projects-btn" data-tab="2">СИП</div>
+									<div class="tabs__btn-item tab-projects-btn" data-tab="3">Монолит</div>
+									<div class="tabs__btn-item tab-projects-btn" data-tab="3">Газобетон</div>
+									<div class="tabs__btn-item tab-projects-btn" data-tab="4">Каркас</div>
+									<div class="tabs__btn-item tab-projects-btn" data-tab="5">Бревно</div>
+								</div>
+
+								<div class="tabs__content">
+									<div class="tabs__content-item tab-projects-content active" data-tab="1">
+										<div class="projects__container">
+											<!-- слайдер -->
+											<div class="projects__slider">
+												<div class="swiper-wrapper">
+													<!-- первый слайд -->
+													<div class="projects__slide swiper-slide">
+														<div class="projects__slide-img">
+															<img src="images/projects/slide-1.jpg" alt="slide-1" />
+														</div>
+														<div class="projects__slide-title">Двухэтажный дом с террасой и мансардой</div>
+														<div class="projects__slide-text">
+															Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам. Строительство доступно в любое время года.
+														</div>
+													</div>
+
+													<!-- второй слайд -->
+													<div class="projects__slide swiper-slide">
+														<div class="projects__slide-img">
+															<img src="images/projects/slide-2.jpg" alt="slide-2" />
+														</div>
+														<div class="projects__slide-title">Двухэтажный дом с мансардой</div>
+														<div class="projects__slide-text">Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам</div>
+													</div>
+
+													<!-- третий слайд -->
+													<div class="projects__slide swiper-slide">
+														<div class="projects__slide-img">
+															<img src="images/projects/slide-3.jpg" alt="slide-3" />
+														</div>
+														<div class="projects__slide-title">Двухэтажный дом с терассой и подвалом</div>
+														<div class="projects__slide-text">Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам</div>
+													</div>
+
+													<!-- четвертый слайд -->
+													<div class="projects__slide swiper-slide">
+														<div class="projects__slide-img">
+															<img src="images/projects/slide-4.jpg" alt="slide-4" />
+														</div>
+														<div class="projects__slide-title">Двухэтажный дом с террасой и мансардой</div>
+														<div class="projects__slide-text">Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам</div>
+													</div>
+
+													<!-- пятый слайд -->
+													<div class="projects__slide swiper-slide">
+														<div class="projects__slide-img">
+															<img src="images/projects/slide-5.jpg" alt="slide-5" />
+														</div>
+														<div class="projects__slide-title">Двухэтажный дом с террасой и мансардой</div>
+														<div class="projects__slide-text">Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам</div>
+													</div>
+												</div>
+											</div>
+
+											<div class="projects__navigation">
+												<div class="swiper-button-prev"></div>
+												<div class="swiper-button-next"></div>
+											</div>
+											<div class="projects__scroll">
+												<div class="projects__scroll-wrapper">
+													<span class="projects__scroll-current">01</span>
+													<div class="swiper-scrollbar"></div>
+													<span class="projects__scroll-count">00</span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<!-- Контейнер с блоками, которые содержат контент вкладок -->
+								<!-- <div class="projects__swiper-start tabs__content swiper">
+									<div class="tabs__content-item projects__swiper tab-projects-content swiper-wrapper active" data-tab="1">
+										<div class="projects__swiper-slide swiper-slide">
+											<div class="projects__swiper-img">
+												<img src="images/projects/slide-1.jpg" alt="slide-1" />
+											</div>
+
+											<div class="projects__swiper-title">Двухэтажный дом с террасой и мансардой</div>
+
+											<div class="projects__swiper-text">Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам. Строительство доступно в любое время года</div>
+										</div>
+
+										<div class="projects__swiper-slide swiper-slide">
+											<div class="projects__swiper-img">
+												<img src="images/projects/slide-2.jpg" alt="slide-2" />
+											</div>
+
+											<div class="projects__swiper-title">Двухэтажный дом с мансардой</div>
+
+											<div class="projects__swiper-text">Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам</div>
+										</div>
+
+										<div class="projects__swiper-slide swiper-slide">
+											<div class="projects__swiper-img">
+												<img src="images/projects/slide-3.jpg" alt="slide-3" />
+											</div>
+
+											<div class="projects__swiper-title">Двухэтажный дом с терассой и подвалом</div>
+
+											<div class="projects__swiper-text">Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам</div>
+										</div>
+
+										<div class="projects__swiper-slide swiper-slide">
+											<div class="projects__swiper-img">
+												<img src="images/projects/slide-4.jpg" alt="slide-4" />
+											</div>
+
+											<div class="projects__swiper-title">Двухэтажный дом с терассой и подвалом</div>
+
+											<div class="projects__swiper-text">Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам</div>
+										</div>
+
+										<div class="projects__swiper-slide swiper-slide">
+											<div class="projects__swiper-img">
+												<img src="images/projects/slide-5.jpg" alt="slide-5" />
+											</div>
+
+											<div class="projects__swiper-title">Двухэтажный дом с терассой и подвалом</div>
+
+											<div class="projects__swiper-text">Современный удобный дом для всей семьи на 4-6 человек. Индивидуальный дизайн по вашим запросам</div>
+										</div>
+									</div> -->
+								<!-- <div class="swiper-pagination"></div> -->
+
+								<!-- <div class="projects__swiper-next"></div>
+									<div class="projects__swiper-prev"></div> -->
+								<!-- <div class="projects__swiper-scroll"></div> -->
+								<!-- <div class="swiper-scrollbar"></div> -->
+								<!-- </div> -->
+								<!-- <div class="projects__swiper-next"></div> -->
+								<!-- <div class="projects__swiper-prev"></div> -->
 							</div>
 						</div>
 					</div>

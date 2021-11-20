@@ -1,17 +1,20 @@
-const swiper = new Swiper(".swiper", {
-	loop: true,
-	speed: 1500,
+const headerSlider = () => {
+	const headerSwiper = new Swiper(".header__slider", {
+		loop: true,
+		speed: 2500,
 
-	autoplay: {
-		delay: 2000,
-		disableOnInteraction: false,
-	},
+		autoplay: {
+			delay: 2000,
+			disableOnInteraction: false,
+		},
 
-	pagination: {
-		el: ".swiper-pagination",
-		clickable: true,
-	},
-});
+		pagination: {
+			el: ".header__swiper-pagination",
+			clickable: true,
+		},
+	});
+};
+headerSlider();
 
 const burger = () => {
 	const burger = document.querySelector(".burger");
@@ -153,22 +156,157 @@ const technologiesAction = () => {
 			plusInfo.classList.add("active");
 		});
 	});
-
-	// if (window.addEventListener) {
-	// 	let once = false;
-	// 	window.addEventListener("touchstart", function () {
-	// 		if (!once) {
-	// 			once = true;
-	// 			plus.forEach((item) => {
-	// 				item.addEventListener("click", () => {
-	// 					let plusInfo = item.querySelectorAll(".tabs__content-hover");
-
-	// 					plusInfo.classList.add("active");
-	// 				});
-	// 			});
-	// 		}
-	// 	});
-	// }
 };
 
 technologiesAction();
+
+// const projectsSlider = () => {
+// 	const projectsSwiper = new Swiper(".projects__slider", {
+// 		loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
+// 		speed: 1000, // скорость
+// 		slidesPerView: 3, // количество слайдов для показа (можно указывать например 2.8 слайда)
+// 		// navigation: {
+// 		// 	// стрелки навигации
+// 		// 	nextEl: ".projects__swiper-next",
+// 		// 	prevEl: ".projects__swiper-prev",
+// 		// },
+// 		watchOverFlow: true, // отключает функционал, если слайдов маньше, чем нужно
+// 		simulateTouch: true, // включение перетаскивания на компьютере
+// 		spaceBetween: 19, // размер отступа, между слайдами
+
+// 		// брейк поинты для разной ширины экрана
+// 		// breakpoints: {
+// 		// 	320: {
+// 		// 		// slidesPerView: 2.2,
+// 		// 	},
+
+// 		// 	480: {
+// 		// 		// количество слайдов для показа (можно указывать например 2.8 слайда)
+
+// 		// 		slidesPerView: "auto",
+// 		// 	},
+
+// 		// 	// ширина >= 1230px
+// 		// 	1300: {
+// 		// 		// количество слайдов для показа (можно указывать например 2.8 слайда)
+// 		// 		slidesPerView: 3,
+
+// 		// 		navigation: {
+// 		// 			nextEl: ".projects__swiper-next",
+// 		// 			prevEl: ".projects__swiper-prev",
+// 		// 		},
+// 		// 	},
+// 		// },
+
+// 		// pagination: {
+// 		// 	el: ".projects__swiper-pagination",
+// 		// 	type: "progressbar",
+// 		// },
+
+// 		// scrollbar: {
+// 		// 	// el: ".projects__swiper-scroll",
+// 		// 	el: ".swiper-scrollbar",
+
+// 		// 	// возможность перетаскивания скролл
+// 		// 	draggable: true,
+
+// 		// 	// размер ползунка
+// 		// 	dragSize: 80,
+// 		// },
+// 	});
+// };
+
+const projectsSlider = () => {
+	const projectsSwiper = new Swiper(".projects__slider", {
+		loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
+		speed: 1500, // скорость
+		// slidesPerView: 3, // количество слайдов для показа (можно указывать например 2.8 слайда)
+		spaceBetween: 19, // размер отступа, между слайдами
+		watchOverFlow: true, // отключает функционал, если слайдов маньше, чем нужно
+		simulateTouch: true, // включение перетаскивания на компьютере
+		scrollbar: {
+			el: ".swiper-scrollbar",
+			dragSize: 80, // размер бегунка
+			draggable: true, // возможность перетаскивания скролл
+		},
+		navigation: {
+			prevEl: ".swiper-button-prev",
+			nextEl: ".swiper-button-next",
+		},
+
+		breakpoints: {
+			// ширина >= 320px
+			300: {
+				slidesPerView: 1.41,
+			},
+
+			350: {
+				slidesPerView: 1.45,
+			},
+
+			400: {
+				slidesPerView: 1.6,
+			},
+
+			450: {
+				slidesPerView: 1.8,
+			},
+
+			500: {
+				slidesPerView: 2.2,
+			},
+
+			550: {
+				slidesPerView: 2.5,
+			},
+
+			// ширина >= 660px
+			660: {
+				slidesPerView: 2.5,
+			},
+
+			768: {
+				slidesPerView: 2.1,
+			},
+
+			800: {
+				slidesPerView: 2.5,
+			},
+
+			// ширина >= 940px
+			940: {
+				slidesPerView: 3,
+			},
+		},
+		// pagination: {
+		// 	el: ".projects__scroll-count",
+		// 	type: "custom",
+		// 	renderCustom: (swiper, current, total) => {
+		// 		return `${total + 2}`;
+		// 	},
+		// },
+	});
+
+	// текущий слайд и общее кол-во слайдов рядом со скроллом
+	const swiperCurrentNumber = document.querySelector(".projects__scroll-current");
+	const swiperCountNumber = document.querySelector(".projects__scroll-count");
+
+	// считаем кол-во слайдов
+	const countProjectsSlides = document.querySelectorAll(".projects__slide");
+	let ProjectsSlidesLength = countProjectsSlides.length;
+
+	// заносим кол-во слайдов в html код
+	swiperCountNumber.innerText = `0${ProjectsSlidesLength}`;
+
+	projectsSwiper.on("slideChange", () => {
+		let index = projectsSwiper.realIndex + 1;
+
+		// заносим текущий слайд в html код
+		swiperCurrentNumber.innerText = `0${index}`;
+	});
+};
+projectsSlider();
+
+// const scrollCount = document.querySelector(".projects__scroll-count");
+// scrollCount.classList.remove("swiper-pagination-custom");
+// scrollCount.classList.remove("swiper-pagination-horizontal");
