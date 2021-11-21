@@ -582,6 +582,12 @@
 	}
 
 	.projects {
+		padding-top: 45px;
+
+		&__tabs {
+			margin-top: 40px;
+		}
+
 		&__scroll {
 			&-wrapper {
 				width: 290px;
