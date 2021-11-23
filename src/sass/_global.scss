@@ -832,12 +832,14 @@ body {
 			color: $color-cream-three;
 			font-family: "Gilroy-Bold", sans-serif;
 			margin-right: 15px;
+			width: 35px;
 		}
 
 		span:last-child {
 			font-size: 26px;
 			color: $color-gray;
 			margin-left: 15px;
+			width: 35px;
 		}
 	}
 
@@ -941,126 +943,83 @@ body {
 	}
 }
 
-// .projects {
-// 	&__tabs {
-// 		max-width: 1082px;
-// 		margin: 0 auto;
-// 		position: relative;
+// этапы строительства
+.stages {
+	padding: 40px 0 50px;
 
-// 		.tabs__content {
-// 			margin-top: 18px;
-// 		}
+	&__items {
+		padding-top: 46px;
+		// display: flex;
+		// align-items: flex-start;
+		// flex-wrap: wrap;
+		display: grid;
 
-// 		.swiper {
-// 			width: 100%;
-// 			height: 100%;
-// 		}
-// 	}
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-// 	&__wrapper {
-// 		padding: 80px 0;
-// 	}
+		grid-row-gap: 30px;
+	}
 
-// 	&__title {
-// 		margin-bottom: 48px;
-// 	}
+	&__item {
+		display: grid;
+		// grid-template-columns: 300px;
+		grid-template-columns: 1fr;
+		// grid-template-rows: 100px 20px minmax(31px, 1fr) 123px;
+		grid-template-rows: 100px 20px auto 1fr;
 
-// 	&__swiper {
-// 		width: 100%;
-// 		height: 100%;
-// 		align-items: flex-start;
-// 		justify-content: space-between;
+		&-number {
+			font-family: "Gilroy-Bold", sans-serif;
+			font-size: 70px;
+			background-image: $color-stages-number;
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+		}
 
-// 		&-start {
-// 		}
+		&-line {
+			position: relative;
 
-// 		&-prev {
-// 			position: absolute;
-// 			left: -60px;
-// 			top: 225px;
-// 			right: auto;
-// 			z-index: 10;
-// 			cursor: pointer;
+			&::before {
+				content: "";
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				width: calc(100% - 10px);
+				height: 1px;
+				background-color: $color-white-line;
+			}
 
-// 			&.swiper-button-disabled {
-// 				opacity: 0.5;
-// 			}
+			&:after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 20px;
+				height: 20px;
+				background: $color-stages-number;
+				border-radius: 50%;
+			}
+		}
 
-// 			&::after {
-// 				position: absolute;
-// 				content: "";
-// 				background-image: url("../images/swiper-prev.svg");
-// 				background-size: 40px 36px;
-// 				width: 40px;
-// 				height: 36px;
-// 				left: 0;
-// 				top: 0;
-// 			}
-// 		}
+		&-title {
+			font-family: "Gilroy-Medium", sans-serif;
+			font-size: 26px;
+			line-height: 32px;
+			padding: 25px 16px 12px 0;
+		}
 
-// 		&-next {
-// 			position: absolute;
-// 			right: -60px;
-// 			top: 225px;
-// 			left: auto;
-// 			z-index: 10;
-// 			cursor: pointer;
+		&-description {
+			font-size: 18px;
+			line-height: 22px;
+			color: $color-mobile-list;
+			padding-right: 16px;
+			// height: 85px;
+			overflow: hidden;
+		}
 
-// 			&.swiper-button-disabled {
-// 				opacity: 0.5;
-// 			}
-
-// 			&::after {
-// 				position: absolute;
-// 				content: "";
-// 				background-image: url("../images/swiper-next.svg");
-// 				background-size: 40px 36px;
-// 				width: 40px;
-// 				height: 36px;
-// 				right: 0;
-// 				top: 0;
-// 			}
-// 		}
-
-// 		&-scroll {
-// 			cursor: pointer;
-// 			background-color: $color-white;
-// 			height: 3px;
-// 			margin-top: 65px;
-
-// 			.swiper-scrollbar-drag {
-// 				background-color: $color-cream-three;
-// 			}
-// 		}
-
-// 		&-slide {
-// 			width: 348px;
-// 			cursor: pointer;
-// 		}
-
-// 		&-img {
-// 			width: 348px;
-// 			height: 282px;
-// 			margin-bottom: 30px;
-
-// 			img {
-// 				object-fit: cover;
-// 				width: 100%;
-// 				height: 100%;
-// 			}
-// 		}
-
-// 		&-title {
-// 			font-family: "Gilroy-Medium", sans-serif;
-// 			font-size: 26px;
-// 			line-height: 32px;
-// 			margin-bottom: 15px;
-// 		}
-
-// 		&-text {
-// 			font-size: 18px;
-// 			line-height: 22px;
-// 			color: $color-mobile-list;
-// 		}
-// 	}
-// }
+		// у последнего этапа, убираем линию
+		&:last-child {
+			.stages__item-line::before {
+				display: none;
+			}
+		}
+	}
+}
