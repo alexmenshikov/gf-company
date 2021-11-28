@@ -42,6 +42,11 @@ textarea {
 	font: inherit; /* По дефолту, шрифтовые свойства, для этих элементов не наследуются */
 	color: inherit;
 	letter-spacing: inherit;
+
+	// убирает чекбокс
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	outline: none;
 }
 
 button,

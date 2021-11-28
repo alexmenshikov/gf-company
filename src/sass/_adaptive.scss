@@ -1,6 +1,16 @@
 @media screen and (min-width: 1921px) {
 }
 
+@media screen and (max-width: 1310px) {
+	.offer {
+		&__wrapper {
+			&::before {
+				display: none;
+			}
+		}
+	}
+}
+
 @media screen and (max-width: 1270px) {
 	.house {
 		&__top {
@@ -127,6 +137,13 @@
 		// 	}
 		// }
 	}
+
+	.offer {
+		&__title {
+			width: 665px;
+			margin: 0 auto 13px;
+		}
+	}
 }
 
 //  1024px - 1199px
@@ -189,6 +206,109 @@
 			}
 		}
 	}
+
+	.footer {
+		&__wrapper {
+			display: grid;
+			grid-template-columns: 220px 1fr 1fr 238px;
+		}
+	}
+}
+
+@media screen and (max-width: 1130px) {
+	.offer {
+		&__wrapper {
+			padding: 50px 33px;
+		}
+
+		&__description {
+			// padding: 0 40px;
+		}
+
+		&__form {
+			flex-direction: column;
+
+			&-input {
+				margin-right: 0;
+				margin-bottom: 18px;
+			}
+		}
+	}
+
+	.contactmap {
+		&__wrapper {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		&__map {
+			margin-top: 35px;
+			min-width: 100%;
+			height: 388px;
+		}
+	}
+
+	.footer {
+		&__wrapper {
+			grid-template-columns: repeat(2, 1fr);
+			grid-template-rows: repeat(4, auto);
+			color: $color-mobile-list;
+		}
+
+		&__logo {
+			grid-column: 1 / 3;
+			grid-row: 1 / 2;
+			margin: 30px auto 55px auto;
+
+			width: 180px;
+		}
+
+		&__menu {
+			grid-column: 1 / 2;
+			grid-row: 2 / 4;
+		}
+
+		&__info {
+			grid-column: 2 / 3;
+			grid-row: 2 / 3;
+		}
+
+		&__pay {
+			grid-column: 2 / 3;
+			grid-row: 3 / 4;
+
+			margin-top: 25px;
+
+			&-item {
+				left: 0;
+				position: relative;
+			}
+		}
+
+		&__phone {
+			grid-column: 1 / 3;
+			grid-row: 4 / 5;
+
+			margin-top: 35px;
+
+			text-align: center;
+
+			&-btn {
+				margin: 0 auto;
+			}
+		}
+
+		&__bottom {
+			padding: 40px 0;
+
+			&-offer {
+				margin-right: 35px;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 1080px) {
 }
 
 //  841px - 1023px
@@ -273,6 +393,18 @@
 					margin-right: 10px;
 				}
 			}
+		}
+	}
+}
+
+@media screen and (max-width: 886px) {
+	.offer {
+		&__wrapper {
+			padding: 50px 27px;
+		}
+
+		&__description {
+			width: 685px;
 		}
 	}
 }
@@ -412,6 +544,80 @@
 	.stages {
 		padding-top: 20px;
 	}
+
+	.offer {
+		&__title {
+			font-size: 40px;
+			line-height: 50px;
+			width: auto;
+		}
+
+		&__description {
+			font-size: 24px;
+			line-height: 29px;
+			width: auto;
+		}
+	}
+
+	.modal {
+		&__wrapper {
+			width: 320px;
+			padding: 72px 15px 35px;
+		}
+
+		&__close {
+			width: 15px;
+			height: 15px;
+			top: 17px;
+			right: 17px;
+		}
+
+		&__title {
+			font-size: 18px;
+			line-height: 22px;
+			width: 290px;
+			margin-bottom: 28px;
+			font-family: "Gilroy-Regular", sans-serif;
+		}
+
+		&__form {
+			width: 250px;
+
+			&-input {
+				height: 60px;
+				padding: 20px;
+				font-size: 18px;
+
+				&::placeholder {
+					font-size: 18px;
+				}
+
+				&:first-child {
+					margin-bottom: 12px;
+				}
+			}
+
+			&-agreement {
+				margin-top: 21px;
+				margin-bottom: 36px;
+			}
+
+			&-text {
+				font-size: 9px;
+				line-height: 11px;
+			}
+
+			&-btn {
+				font-size: 18px;
+				height: 60px;
+				padding: 21px 54px;
+
+				.btn__text {
+					font-size: 18px;
+				}
+			}
+		}
+	}
 }
 
 //  661px - 750px
@@ -466,7 +672,8 @@
 	}
 
 	.title-h3 {
-		font-size: 26px;
+		// font-size: 26px;
+		font-size: 30px;
 	}
 
 	.services {
@@ -734,6 +941,218 @@
 			}
 		}
 	}
+
+	.offer {
+		padding-top: 40px;
+
+		.container {
+			padding: 0;
+		}
+		&__wrapper {
+			padding: 35px 15px;
+		}
+
+		&__title {
+			font-size: 30px;
+			line-height: 37px;
+			width: 270px;
+			margin-bottom: 16px;
+		}
+
+		&__description {
+			font-size: 18px;
+			line-height: 22px;
+			width: 275px;
+		}
+
+		&__form {
+			&-input {
+				width: 250px;
+				height: 60px;
+				font-size: 18px;
+				padding: 19px 25px;
+				margin-bottom: 12px;
+
+				&::placeholder {
+					font-size: 18px;
+				}
+			}
+
+			&-btn {
+				width: 250px;
+				height: 60px;
+			}
+		}
+	}
+
+	.contactmap {
+		padding-bottom: 120px;
+
+		&__info {
+			width: 100%;
+		}
+
+		&__title {
+			text-align: center;
+		}
+
+		&__description {
+			font-size: 18px;
+			line-height: 21px;
+			width: 240px;
+			text-align: center;
+			margin: 0 auto 25px auto;
+		}
+
+		&__contact {
+			&-item {
+				&:not(:last-child) {
+					margin-bottom: 15px;
+				}
+
+				// &:first-child {
+				// 	.contactmap__contact-icon {
+				// 		width: 11px;
+				// 	}
+				// }
+
+				// &:nth-child(2) {
+				// 	.contactmap__contact-icon {
+				// 		width: 14px;
+				// 	}
+				// }
+			}
+
+			&-icon {
+				width: 15px;
+				height: 15px;
+				margin-right: 5px;
+			}
+
+			&-text {
+				font-size: 14px;
+			}
+		}
+
+		&__social {
+			&-item {
+				width: 22px;
+			}
+		}
+
+		&__map {
+			height: 300px;
+		}
+	}
+
+	.footer {
+		&__wrapper {
+			grid-template-columns: 1fr;
+			grid-template-rows: auto auto auto auto auto;
+		}
+
+		&__top {
+			padding-bottom: 45px;
+		}
+
+		&__logo {
+			width: 100px;
+
+			margin: 20px auto 40px;
+		}
+
+		&__menu {
+			grid-column: 1/2;
+			grid-row: 2/3;
+
+			margin: 0 auto;
+			text-align: center;
+
+			&-link {
+				font-size: 18px;
+
+				&:not(:last-child) {
+					margin-bottom: 18px;
+				}
+			}
+		}
+
+		&__phone {
+			grid-column: 1/2;
+			grid-row: 3/4;
+
+			&-number {
+				font-size: 18px;
+				margin-bottom: 9px;
+			}
+
+			&-btn {
+				width: 230px;
+				height: 60px;
+				padding: 18px 36px;
+
+				span {
+					font-family: "Gilroy-Medium", sans-serif;
+				}
+			}
+		}
+
+		&__info {
+			grid-column: 1/2;
+			grid-row: 4/5;
+
+			margin: 35px auto 0 auto;
+			text-align: center;
+
+			&-item {
+				font-size: 16px;
+
+				&:not(:last-child) {
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		&__pay {
+			grid-column: 1/2;
+			grid-row: 5/6;
+
+			margin: 35px auto 0 auto;
+
+			width: 106px;
+		}
+
+		&__bottom {
+			padding: 20px 0 42px;
+
+			&-wrapper {
+				flex-direction: column;
+				align-items: flex-start;
+
+				font-size: 10px;
+			}
+
+			&-left {
+				margin-bottom: 18px;
+			}
+
+			&-right {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				width: 100%;
+			}
+
+			&-offer {
+				margin-right: 0;
+				// display: block;
+			}
+
+			&-politics {
+				// display: block;
+			}
+		}
+	}
 }
 
 //  480px - 579px
@@ -788,6 +1207,11 @@
 
 //  320px - 479px
 @media screen and (max-width: 479px) {
+	.contactmap {
+		&__map {
+			height: 156px;
+		}
+	}
 }
 
 // адаптив для высоты

@@ -310,3 +310,74 @@ projectsSlider();
 // const scrollCount = document.querySelector(".projects__scroll-count");
 // scrollCount.classList.remove("swiper-pagination-custom");
 // scrollCount.classList.remove("swiper-pagination-horizontal");
+
+// отправка заявки на специальное предложение
+const offer = () => {
+	const name = document.getElementById("offer_form_name");
+	const phone = document.getElementById("offer_form_phone");
+
+	const btn = document.querySelector(".offer__form-btn");
+
+	btn.addEventListener("click", () => {
+		name.classList.remove("active");
+		phone.classList.remove("active");
+
+		if (!name.value) {
+			name.classList.add("active");
+		}
+
+		if (!phone.value) {
+			phone.classList.add("active");
+		}
+	});
+};
+offer();
+
+const validationForm = () => {
+	const name = document.getElementById("modal_form_name");
+	const phone = document.getElementById("modal_form_phone");
+	const agree = document.querySelector(".modal__form-checkbox");
+	const btn = document.querySelector(".modal__form-btn");
+
+	btn.addEventListener("click", () => {
+		console.log("press");
+
+		name.classList.remove("error");
+		phone.classList.remove("error");
+		agree.querySelector(".checkbox").classList.remove("error");
+
+		if (!name.value) {
+			name.classList.add("error");
+		}
+
+		if (!phone.value) {
+			phone.classList.add("error");
+		}
+
+		console.log(agree.querySelector(".hidden-checkbox").checked);
+
+		if (!agree.querySelector(".hidden-checkbox").checked) {
+			agree.querySelector(".checkbox").classList.add("error");
+		}
+	});
+};
+
+const modalCallBack = () => {
+	const btn = document.querySelector(".header__phone-backcall");
+	const modal = document.querySelector(".modal");
+	const body = document.querySelector("body");
+	const close = document.querySelector(".modal__close");
+
+	btn.addEventListener("click", () => {
+		modal.classList.add("active");
+		body.classList.add("block");
+
+		validationForm();
+	});
+
+	close.addEventListener("click", () => {
+		modal.classList.remove("active");
+		body.classList.remove("block");
+	});
+};
+modalCallBack();

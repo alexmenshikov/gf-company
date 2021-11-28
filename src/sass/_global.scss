@@ -6,6 +6,20 @@ body {
 	color: $color-white;
 }
 
+body {
+	&.block {
+		overflow: hidden;
+	}
+}
+
+a {
+	transition: all 0.3s linear;
+
+	&:hover {
+		color: $color-hover;
+	}
+}
+
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -167,6 +181,11 @@ body {
 			text-align: right;
 			margin: 5px 7px 0 0;
 			cursor: pointer;
+			transition: all 0.3s linear;
+
+			&:hover {
+				color: $color-hover;
+			}
 		}
 	}
 
@@ -251,7 +270,8 @@ body {
 	}
 
 	&:hover {
-		filter: drop-shadow(0px 4px 8px #fcc183);
+		box-shadow: 0 4px 18px 0px $color-shadow;
+		// filter: drop-shadow(0px 4px 8px #fcc183);
 	}
 }
 
@@ -1020,6 +1040,556 @@ body {
 			.stages__item-line::before {
 				display: none;
 			}
+		}
+	}
+}
+
+// специальное предложение
+.offer {
+	padding: 80px 0 86px;
+
+	&__wrapper {
+		padding: 40px 52px;
+		position: relative;
+
+		&::after {
+			position: absolute;
+			content: "";
+			width: 100%;
+			height: 100%;
+			background-color: $color-offer;
+			top: 0;
+			left: 0;
+		}
+
+		&::before {
+			position: absolute;
+			content: "";
+			width: 1021px;
+			height: 292px;
+			box-sizing: border-box;
+			border: 2px solid transparent;
+			-moz-border-image: -moz-linear-gradient(180deg, rgba(211, 176, 137, 0.41) 0%, rgba(234, 209, 184, 0.41) 100%);
+			-webkit-border-image: -webkit-linear-gradient(180deg, rgba(211, 176, 137, 0.41) 0%, rgba(234, 209, 184, 0.41) 100%);
+			border-image: $color-offer-before;
+			border-image-slice: 1;
+
+			top: 87px;
+			left: -41px;
+		}
+	}
+
+	&__title {
+		position: relative;
+		z-index: 3;
+		margin-bottom: 13px;
+	}
+
+	&__description {
+		position: relative;
+		z-index: 3;
+		font-size: 26px;
+		line-height: 32px;
+		text-align: center;
+		font-family: "Gilroy-Medium", sans-serif;
+		color: $color-mobile-list;
+		margin: 0 auto 30px;
+		width: 780px;
+
+		span {
+			color: $color-cream-three;
+		}
+	}
+
+	&__form {
+		position: relative;
+		z-index: 3;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		&-input {
+			background-color: $color-white;
+			border-radius: 6px;
+			padding: 26px 30px;
+			width: 323px;
+			height: 80px;
+			box-sizing: border-box;
+			font-size: 26px;
+			color: $color-btn-text;
+			outline: none;
+			margin-right: 12px;
+			transition: all 0.3s linear;
+
+			&.active {
+				box-shadow: 0 0 15px 2px $color-error;
+				-webkit-box-shadow: 0 0 15px 2px $color-error;
+				-moz-box-shadow: 0 0 15px 2px $color-error;
+
+				// box-shadow: 0 4px 18px 0 $color-error;
+			}
+
+			&::placeholder {
+				font-size: 26px;
+				color: $color-btn-text;
+			}
+		}
+
+		&-btn {
+			width: 323px;
+			height: 80px;
+			box-sizing: border-box;
+		}
+	}
+}
+
+// контакты
+.contactmap {
+	padding: 130px 0 150px;
+
+	&__wrapper {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-wrap: wrap;
+	}
+
+	&__info {
+		flex-shrink: 0;
+		margin-right: 30px;
+	}
+
+	&__title {
+		margin-bottom: 15px;
+		text-align: left;
+	}
+
+	&__description {
+		font-size: 24px;
+		color: $color-mobile-list;
+		margin-bottom: 35px;
+	}
+
+	&__contact {
+		margin-bottom: 30px;
+
+		&-item {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+
+			&:not(:last-child) {
+				margin-bottom: 20px;
+			}
+
+			a {
+				cursor: pointer;
+			}
+		}
+
+		&-icon {
+			width: 20px;
+			height: 20px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			margin-right: 12px;
+
+			svg {
+				width: 100%;
+			}
+		}
+
+		&-text {
+		}
+	}
+
+	&__social {
+		display: flex;
+		align-items: center;
+
+		&-item {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+
+			width: 30px;
+			height: auto;
+
+			cursor: pointer;
+
+			svg {
+				width: 100%;
+				fill: $color-white;
+				transition: all 0.3s linear;
+			}
+
+			&:not(:last-child) {
+				margin-right: 20px;
+			}
+
+			&:hover svg {
+				fill: $color-hover;
+			}
+		}
+	}
+
+	&__map {
+		max-width: 550px;
+		height: 320px;
+		flex: 1 0 auto;
+
+		// filter: brightness(50%);
+		// -ms-filter: brightness(50%);
+		// -webkit-filter: brightness(50%);
+		// -moz-filter: brightness(50%);
+		// -o-filter: brightness(50%);
+
+		// ч/б
+		filter: grayscale(1);
+		-ms-filter: grayscale(1);
+		-webkit-filter: grayscale(1);
+		-moz-filter: grayscale(1);
+		-o-filter: grayscale(1);
+
+		iframe {
+			// инверсия
+			filter: invert(100%);
+			-ms-filter: invert(100%);
+			-webkit-filter: invert(100%);
+			-moz-filter: invert(100%);
+			-o-filter: invert(100%);
+
+			width: 100%;
+			height: 100%;
+		}
+	}
+}
+
+.footer {
+	background-color: $color-offer;
+
+	&__top {
+		padding: 20px 0 30px 0;
+		border-bottom: 1px solid $color-modal-input;
+	}
+
+	&__wrapper {
+		display: grid;
+		grid-template-columns: 270px 1fr 1fr 238px;
+		grid-template-rows: 108px 74px;
+	}
+
+	&__logo {
+		grid-row: 1 / 3;
+		width: 150px;
+
+		margin-right: 120px;
+	}
+
+	&__menu {
+		margin-top: 10px;
+		// margin-right: 90px;
+		display: flex;
+		flex-direction: column;
+
+		grid-row: 1 / 3;
+
+		&-link {
+			&:not(:last-child) {
+				margin-bottom: 25px;
+			}
+		}
+	}
+
+	&__info {
+		margin-top: 10px;
+		// margin-right: 50px;
+		display: flex;
+		flex-direction: column;
+
+		grid-row: 1 / 3;
+
+		&-item {
+			&:not(:last-child) {
+				margin-bottom: 15px;
+			}
+		}
+	}
+
+	&__phone {
+		margin-top: 10px;
+		display: flex;
+		flex-direction: column;
+		text-align: right;
+
+		grid-row: 1 / 2;
+
+		&-number {
+			margin-bottom: 15px;
+		}
+
+		&-btn {
+			width: 238px;
+			height: 60px;
+			padding: 18px 38px;
+
+			background: $color-button;
+			box-shadow: 0 4px 4px -2px $color-shadow;
+			border-radius: 6px;
+			transition: all 0.3s linear;
+			cursor: pointer;
+			box-sizing: border-box;
+
+			&:hover {
+				box-shadow: 0 4px 18px 0 $color-shadow;
+			}
+
+			span {
+				font-size: 20px;
+				color: $color-btn-text;
+				font-family: "Gilroy-Semibold", sans-serif;
+			}
+		}
+	}
+
+	&__pay {
+		margin-top: 39px;
+		grid-row: 2 / 3;
+		position: relative;
+
+		&-item {
+			position: absolute;
+			right: 0;
+		}
+	}
+
+	&__bottom {
+		padding: 25px 0 35px;
+
+		font-size: 12px;
+		color: $color-modal-text;
+
+		&-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+
+		&-offer {
+			margin-right: 120px;
+		}
+
+		&-right {
+			a {
+				text-decoration-line: underline;
+			}
+		}
+	}
+}
+
+// модальное окно
+.modal {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: $color-modal-bg;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 10;
+	top: 0;
+	left: 0;
+	transition: all 0.3s ease;
+	opacity: 0;
+	visibility: hidden;
+
+	&.active {
+		// display: flex;
+		visibility: visible;
+		opacity: 1;
+	}
+
+	&__wrapper {
+		position: relative;
+		padding: 80px 133px;
+		background-color: $color-modal;
+		border-radius: 5px;
+		width: 768px;
+		// height: 594px;
+		box-sizing: border-box;
+	}
+
+	&__close {
+		position: absolute;
+		width: 28px;
+		height: 28px;
+		top: 30px;
+		right: 36px;
+		cursor: pointer;
+		transition: all 0.3s linear;
+
+		&:hover {
+			// box-shadow: 0 0 8px 0 $color-cream-two;
+			// filter: drop-shadow(0px 4px 8px #fcc183);
+		}
+	}
+
+	&__title {
+		font-family: "Gilroy-Medium", sans-serif;
+		font-size: 26px;
+		line-height: 32px;
+		text-align: center;
+		margin: 0 auto 40px auto;
+		width: 485px;
+	}
+
+	&__form {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		width: 355px;
+		margin: 0 auto;
+
+		&-input {
+			border-radius: 6px;
+			font-size: 26px;
+			background-color: $color-modal-input;
+			padding: 26px 30px;
+			width: 100%;
+			height: 80px;
+			box-sizing: border-box;
+			color: $color-white;
+			transition: all 0.3s;
+
+			&::placeholder {
+				font-size: 26px;
+				color: $color-white;
+			}
+
+			&:first-child {
+				margin-bottom: 20px;
+			}
+
+			&.error {
+				// border: 1px solid $color-error;
+				box-shadow: 0 0 15px 2px $color-error;
+				-webkit-box-shadow: 0 0 15px 2px $color-error;
+				-moz-box-shadow: 0 0 15px 2px $color-error;
+			}
+		}
+
+		&-label {
+			margin-top: 12px;
+			margin-bottom: 30px;
+			font-size: 12px;
+			line-height: 14px;
+			color: $color-modal-text;
+			display: flex;
+			align-items: flex-start;
+
+			a {
+				cursor: pointer;
+				position: relative;
+
+				&::after {
+					position: absolute;
+					content: "";
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 1px;
+					background-color: $color-modal-text;
+				}
+			}
+		}
+
+		&-agreement {
+			display: flex;
+			align-items: flex-start;
+			margin-top: 12px;
+			margin-bottom: 30px;
+		}
+
+		&-text {
+			font-size: 12px;
+			line-height: 14px;
+			color: $color-modal-text;
+			z-index: 2;
+
+			a {
+				cursor: pointer;
+				position: relative;
+
+				&::after {
+					position: absolute;
+					content: "";
+					bottom: 0;
+					left: 0;
+					width: 100%;
+					height: 1px;
+					background-color: $color-modal-text;
+				}
+			}
+		}
+
+		&-checkbox {
+			// Тут мы просто центрируем чекбокс и текст
+			display: flex;
+			align-items: center;
+
+			input {
+				-webkit-appearance: none; // Скрываем оригинальный чекбокс
+				position: absolute; // После скрытия оставется пустое пространство,
+				// но абсолютное позиционирование это устранит
+			}
+
+			.checkbox {
+				// Тут стилизуем сам чекбокс
+				position: relative;
+				margin-right: 6px;
+				width: 12px;
+				height: 12px;
+				border: 1px solid #bcbaba;
+				box-sizing: border-box;
+				border-radius: 2px;
+				transition: all 0.3s;
+				z-index: 1;
+
+				&.error {
+					box-shadow: 0 0 10px 2px $color-error;
+					-webkit-box-shadow: 0 0 10px 2px $color-error;
+					-moz-box-shadow: 0 0 10px 2px $color-error;
+				}
+			}
+
+			.checkmark {
+				// Тут центритуем и пишем стили для иконки
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				width: 75%;
+				height: auto;
+				display: none; // Скрываем иконку
+			}
+
+			input:checked ~ .checkbox .checkmark {
+				display: block; // Показываем иконку, когда чекбокс активен
+			}
+
+			input:checked ~ .checkbox {
+				background-color: transparent;
+				border: 1px solid #bcbaba;
+				// Если вы хотите не только отображать икнонку, но и менять
+				// сам чекбокс после активации - напишите сюда код для активного состояния
+			}
+		}
+
+		&-btn {
+			width: 100%;
+			height: 80px;
 		}
 	}
 }
