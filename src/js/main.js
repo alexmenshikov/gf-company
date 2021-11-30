@@ -362,17 +362,35 @@ const validationForm = () => {
 	});
 };
 
+// модальное окно обратный звонок
 const modalCallBack = () => {
 	const btn = document.querySelector(".header__phone-backcall");
 	const modal = document.querySelector(".modal");
 	const body = document.querySelector("body");
 	const close = document.querySelector(".modal__close");
 
-	btn.addEventListener("click", () => {
+	btn.addEventListener("click", (event) => {
+		event.preventDefault();
+
+		const modal_btn = document.querySelector(".modal__form-btn");
+
 		modal.classList.add("active");
 		body.classList.add("block");
 
+		modal_btn.querySelector(".btn__text").innerText = "Заказать звонок";
+
 		validationForm();
+	});
+
+	document.addEventListener("mousedown", (event) => {
+		// if (event.target !== modal.querySelector(".modal__wrapper")) {
+		// 	modal.classList.remove("active");
+		// 	body.classList.remove("block");
+		// }
+		if (event.target.closest(".modal__wrapper") === null) {
+			modal.classList.remove("active");
+			body.classList.remove("block");
+		}
 	});
 
 	close.addEventListener("click", () => {
@@ -381,3 +399,44 @@ const modalCallBack = () => {
 	});
 };
 modalCallBack();
+
+// модальные окна оставить заявку
+const submit_application = () => {
+	const btn = document.querySelectorAll(".btn-modal");
+
+	const modal = document.querySelector(".modal");
+	const body = document.querySelector("body");
+	const close = document.querySelector(".modal__close");
+
+	btn.forEach((item) => {
+		item.addEventListener("click", (event) => {
+			event.preventDefault();
+
+			const modal_btn = document.querySelector(".modal__form-btn");
+
+			modal.classList.add("active");
+			body.classList.add("block");
+
+			modal_btn.querySelector(".btn__text").innerText = item.querySelector(".btn__text").innerText;
+
+			validationForm();
+		});
+	});
+
+	document.addEventListener("mousedown", (event) => {
+		// if (event.target !== modal.querySelector(".modal__wrapper")) {
+		// 	modal.classList.remove("active");
+		// 	body.classList.remove("block");
+		// }
+		if (event.target.closest(".modal__wrapper") === null) {
+			modal.classList.remove("active");
+			body.classList.remove("block");
+		}
+	});
+
+	close.addEventListener("click", () => {
+		modal.classList.remove("active");
+		body.classList.remove("block");
+	});
+};
+submit_application();
