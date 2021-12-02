@@ -18,12 +18,22 @@ headerSlider();
 
 const burger = () => {
 	const burger = document.querySelector(".burger");
-	// const menu = document.getElementsByClassName("menu")[0];
-	// const menu_link = document.getElementsByClassName("menu__link");
+	const mobile = document.querySelector(".mobile");
+	const body = document.querySelector("body");
+	const mobileLink = document.querySelectorAll(".mobile__item");
 
 	burger.addEventListener("click", () => {
 		burger.classList.toggle("open");
-		// menu.classList.toggle("open");
+		mobile.classList.toggle("active");
+		body.classList.toggle("noscroll");
+	});
+
+	mobileLink.forEach((item) => {
+		item.querySelector(".mobile__link").addEventListener("click", () => {
+			burger.classList.remove("open");
+			mobile.classList.remove("active");
+			body.classList.remove("noscroll");
+		});
 	});
 };
 burger();
@@ -363,6 +373,50 @@ const validationForm = () => {
 };
 
 // модальное окно обратный звонок
+const modalCallBackMobile = () => {
+	const btn = document.querySelector(".mobile__phone-backcall");
+	const modal = document.querySelector(".modal");
+	const body = document.querySelector("body");
+	const close = document.querySelector(".modal__close");
+	const mobileMenu = document.querySelector(".mobile");
+	const burger = document.querySelector(".burger");
+
+	btn.addEventListener("click", (event) => {
+		event.preventDefault();
+
+		const modal_btn = document.querySelector(".modal__form-btn");
+
+		modal.classList.add("active");
+		body.classList.add("block");
+
+		modal_btn.querySelector(".btn__text").innerText = "Заказать звонок";
+
+		mobileMenu.classList.remove("active");
+		burger.classList.remove("open");
+		body.classList.remove("noscroll");
+
+		validationForm();
+	});
+
+	document.addEventListener("mousedown", (event) => {
+		// if (event.target !== modal.querySelector(".modal__wrapper")) {
+		// 	modal.classList.remove("active");
+		// 	body.classList.remove("block");
+		// }
+		if (event.target.closest(".modal__wrapper") === null) {
+			modal.classList.remove("active");
+			body.classList.remove("block");
+		}
+	});
+
+	close.addEventListener("click", () => {
+		modal.classList.remove("active");
+		body.classList.remove("block");
+	});
+};
+modalCallBackMobile();
+
+// модальное окно обратный звонок
 const modalCallBack = () => {
 	const btn = document.querySelector(".header__phone-backcall");
 	const modal = document.querySelector(".modal");
@@ -440,3 +494,21 @@ const submit_application = () => {
 	});
 };
 submit_application();
+
+// плавная прокрутка
+const smothScroll = () => {
+	const anchors = document.querySelectorAll('a[href*="#"]');
+	for (let anchor of anchors) {
+		anchor.addEventListener("click", (event) => {
+			event.preventDefault();
+
+			const blockID = anchor.getAttribute("href").substr(1);
+
+			document.getElementById(blockID).scrollIntoView({
+				behavior: "smooth",
+				block: "start",
+			});
+		});
+	}
+};
+smothScroll();
