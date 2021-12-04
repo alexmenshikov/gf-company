@@ -120,7 +120,7 @@
 									<a class="header__menu-link" href="#stages">Этапы строительства</a>
 								</li>
 								<li class="header__menu-item">
-									<a class="header__menu-link" href="#">Наши дома</a>
+									<a class="header__menu-link" href="#houses">Наши дома</a>
 								</li>
 								<li class="header__menu-item">
 									<a class="header__menu-link" href="#contactmap">Контакты</a>
@@ -172,7 +172,7 @@
 									<a class="mobile__link" href="#stages">Этапы строительства</a>
 								</li>
 								<li class="mobile__item">
-									<a class="mobile__link" href="#">Наши дома</a>
+									<a class="mobile__link" href="#houses">Наши дома</a>
 								</li>
 								<li class="mobile__item">
 									<a class="mobile__link" href="#contactmap">Контакты</a>
@@ -307,7 +307,7 @@
 					</div>
 				</section>
 
-				<!-- Раздел с технологиями -->
+				<!-- технологии -->
 				<section id="technologies" class="technologies">
 					<div class="container">
 						<div class="technologies__wrapper">
@@ -556,7 +556,7 @@
 					</div>
 				</section>
 
-				<!-- Галерея с проектами -->
+				<!-- галерея с проектами -->
 				<section id="projects" class="projects">
 					<div class="container">
 						<div class="projects__wrapper">
@@ -636,7 +636,7 @@
 											<div class="projects__scroll">
 												<div class="projects__scroll-wrapper">
 													<span class="projects__scroll-current">01</span>
-													<div class="swiper-scrollbar"></div>
+													<div class="projects__scroll-scrollbar swiper-scrollbar"></div>
 													<span class="projects__scroll-count">00</span>
 												</div>
 											</div>
@@ -648,7 +648,7 @@
 					</div>
 				</section>
 
-				<!-- Этапы строительства -->
+				<!-- этапы строительства -->
 				<section id="stages" class="stages">
 					<div class="container">
 						<div class="stages__wrapper">
@@ -722,6 +722,7 @@
 					</div>
 				</section>
 
+				<!-- специальное предложение -->
 				<section class="offer">
 					<div class="container">
 						<div class="offer__wrapper">
@@ -739,6 +740,94 @@
 					</div>
 				</section>
 
+				<!-- наши готовые дома -->
+				<section id="houses" class="houses">
+					<div class="container">
+						<div class="houses__wrapper">
+							<h3 class="houses__title title-h3">Наши готовые дома</h3>
+
+							<!-- Общий контейнер для табов -->
+							<div class="houses__tabs tabs">
+								<!-- Контейнер с вкладками -->
+								<div class="tabs__btn">
+									<div class="tabs__btn-item house-tab active" data-tab="1">Все дома</div>
+									<div class="tabs__btn-item house-tab" data-tab="2">СИП</div>
+									<div class="tabs__btn-item house-tab" data-tab="3">Монолит</div>
+									<div class="tabs__btn-item house-tab" data-tab="4">Газобетон</div>
+									<div class="tabs__btn-item house-tab" data-tab="5">Каркас</div>
+									<div class="tabs__btn-item house-tab" data-tab="6">Бревно</div>
+								</div>
+
+								<!-- Контейнер с блоками, которые содержат контент вкладок -->
+								<div class="houses__content">
+									<!-- СИП -->
+									<div class="houses__content-item house-content active" data-tab="1">
+										<span class="houses__content-title">Проект Мюнхен</span>
+										<div class="houses__content-text">
+											<p>Большой и просторный дом. Отличается интересной, современной планировкой и необычной архитектурой, которая наверняка привлечёт взгляды.</p>
+											<p>
+												Пяти спален хватит даже большой семье, чтобы с комфортом разместиться самим и позвать с ночёвкой гостей, а просторная гостиная позволит собрать друзей и близких за одним столом
+											</p>
+										</div>
+									</div>
+								</div>
+
+								<div class="houses__active">
+									<button class="btn btn-modal">
+										<span class="btn__text">Заказать проект</span>
+									</button>
+								</div>
+
+								<!-- Контейнер с блоками, которые содержат контент вкладок -->
+								<div class="houses__gallery-wrapper">
+									<div class="houses__gallery">
+										<div class="houses__gallery-item house-gallery active" data-tab="1">
+											<div class="swiper-wrapper">
+												<div class="houses__gallery-slide swiper-slide">
+													<img src="images/our-houses/sip/01.jpg" alt="sip" />
+												</div>
+
+												<div class="houses__gallery-slide swiper-slide">
+													<img src="images/our-houses/sip/02.jpg" alt="sip" />
+												</div>
+
+												<div class="houses__gallery-slide swiper-slide">
+													<img src="images/our-houses/sip/03.jpg" alt="sip" />
+												</div>
+
+												<div class="houses__gallery-slide swiper-slide">
+													<img src="images/our-houses/sip/04.jpg" alt="sip" />
+												</div>
+
+												<div class="houses__gallery-slide swiper-slide">
+													<img src="images/our-houses/sip/05.jpg" alt="sip" />
+												</div>
+											</div>
+										</div>
+
+										<!-- навигация (стрелки и цифры) -->
+										<div class="houses__gallery-navigation">
+											<div class="houses__gallery-prev"></div>
+											<div class="houses__gallery-pagination"></div>
+											<div class="houses__gallery-next"></div>
+										</div>
+									</div>
+
+									<!-- скролл для мобильной версии -->
+									<div class="houses__scroll">
+										<div class="houses__scroll-wrapper">
+											<span class="houses__scroll-current">01</span>
+											<div class="houses__scroll-scrollbar swiper-scrollbar"><div class="swiper-scrollbar-drag" style="transform: translate3d(0px, 0px, 0px); width: 80px"></div></div>
+											<span class="houses__scroll-count">05</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- контакты -->
 				<section id="contactmap" class="contactmap">
 					<div class="container">
 						<div class="contactmap__wrapper">
@@ -846,6 +935,7 @@
 					</div>
 				</section>
 			</main>
+
 			<footer class="footer">
 				<div class="footer__top">
 					<div class="container">
@@ -857,7 +947,7 @@
 								<a class="footer__menu-link" href="#services">Услуги</a>
 								<a class="footer__menu-link" href="#projects">Проекты</a>
 								<a class="footer__menu-link" href="#stages">Этапы строительства</a>
-								<a class="footer__menu-link" href="#">Наши построенные дома</a>
+								<a class="footer__menu-link" href="#houses">Наши построенные дома</a>
 							</div>
 							<div class="footer__info">
 								<div class="footer__info-item">ИП Соколов Сергей Андреевич</div>
@@ -898,6 +988,7 @@
 			</footer>
 		</div>
 
+		<!-- модальное окно -->
 		<div class="modal">
 			<div class="modal__wrapper">
 				<div class="modal__close">

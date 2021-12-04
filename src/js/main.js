@@ -229,13 +229,13 @@ technologiesAction();
 const projectsSlider = () => {
 	const projectsSwiper = new Swiper(".projects__slider", {
 		loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
-		speed: 1500, // скорость
+		speed: 1000, // скорость
 		// slidesPerView: 3, // количество слайдов для показа (можно указывать например 2.8 слайда)
 		spaceBetween: 19, // размер отступа, между слайдами
 		watchOverFlow: true, // отключает функционал, если слайдов маньше, чем нужно
 		simulateTouch: true, // включение перетаскивания на компьютере
 		scrollbar: {
-			el: ".swiper-scrollbar",
+			el: ".projects__scroll-scrollbar",
 			dragSize: 80, // размер бегунка
 			draggable: true, // возможность перетаскивания скролл
 		},
@@ -288,13 +288,6 @@ const projectsSlider = () => {
 				slidesPerView: 3,
 			},
 		},
-		// pagination: {
-		// 	el: ".projects__scroll-count",
-		// 	type: "custom",
-		// 	renderCustom: (swiper, current, total) => {
-		// 		return `${total + 2}`;
-		// 	},
-		// },
 	});
 
 	// текущий слайд и общее кол-во слайдов рядом со скроллом
@@ -316,6 +309,66 @@ const projectsSlider = () => {
 	});
 };
 projectsSlider();
+
+// слайдер наши готовые дома
+const houseSlider = () => {
+	const houseSwiper = new Swiper(".house-gallery", {
+		// direction: "vertical",
+		loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
+		speed: 1000, // скорость
+		simulateTouch: true, // включение перетаскивания на компьютере
+		pagination: {
+			el: ".houses__gallery-pagination",
+			clickable: true,
+			renderBullet: function (index, className) {
+				return '<span class="' + className + '">0' + (index + 1) + "</span>";
+			},
+		},
+		navigation: {
+			prevEl: ".houses__gallery-prev",
+			nextEl: ".houses__gallery-next",
+		},
+
+		breakpoints: {
+			// ширина >= 320px
+			300: {
+				spaceBetween: 16, // размер отступа, между слайдами
+				slidesPerView: 1.4,
+				direction: "horizontal",
+				scrollbar: {
+					el: ".houses__scroll-scrollbar",
+					dragSize: 80, // размер бегунка
+					draggable: true, // возможность перетаскивания скролл
+				},
+			},
+
+			// ширина >= 660px
+			660: {
+				slidesPerView: 1,
+				direction: "vertical",
+			},
+		},
+	});
+
+	// текущий слайд и общее кол-во слайдов рядом со скроллом
+	const swiperCurrentNumber = document.querySelector(".houses__scroll-current");
+	const swiperCountNumber = document.querySelector(".houses__scroll-count");
+
+	// считаем кол-во слайдов
+	const countProjectsSlides = document.querySelectorAll(".houses__gallery-slide");
+	let ProjectsSlidesLength = countProjectsSlides.length;
+
+	// заносим кол-во слайдов в html код
+	swiperCountNumber.innerText = `0${ProjectsSlidesLength}`;
+
+	houseSwiper.on("slideChange", () => {
+		let index = houseSwiper.realIndex + 1;
+
+		// заносим текущий слайд в html код
+		swiperCurrentNumber.innerText = `0${index}`;
+	});
+};
+houseSlider();
 
 // const scrollCount = document.querySelector(".projects__scroll-count");
 // scrollCount.classList.remove("swiper-pagination-custom");
