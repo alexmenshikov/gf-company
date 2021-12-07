@@ -31,6 +31,8 @@ a {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
+
+	overflow: hidden;
 }
 
 .main {
@@ -657,8 +659,32 @@ a {
 }
 
 .technologies {
+	z-index: 2;
+	position: relative;
+
 	&__wrapper {
 		padding: 40px 0 90px 0;
+
+		position: relative;
+
+		&::after {
+			position: absolute;
+			content: "";
+			width: 1008px;
+			height: 990px;
+			background-image: url(../images/decor/one.png);
+			background-size: 1008px 990px;
+			// background-color: $color-decor-one;
+			// filter: blur(693px);
+
+			// -webkit-filter: blur(693px);
+			// -moz-filter: blur(693px);
+			// filter: blur(693px);
+
+			top: 305px;
+			right: -430px;
+			z-index: -1;
+		}
 	}
 
 	&__title {
@@ -1074,6 +1100,67 @@ a {
 .stages {
 	padding: 40px 0 50px;
 
+	z-index: 2;
+	position: relative;
+
+	&__wrapper {
+		position: relative;
+
+		&::after {
+			position: absolute;
+			content: "";
+			width: 1085px;
+			height: 1181px;
+			// background-image: url(../images/decor/two.png);
+			// background-size: 1085px 1182px;
+			// opacity: 0.7;
+
+			// background-color: $color-decor-one;
+			// filter: blur(693px);
+
+			// -webkit-filter: blur(693px);
+			// -moz-filter: blur(693px);
+			// filter: blur(693px);
+
+			top: 580px;
+			left: -500px;
+			z-index: -1;
+		}
+		// &::after {
+		// 	position: absolute;
+		// 	content: "";
+		// 	width: 968px;
+		// 	height: 968px;
+		// 	background-color: $color-decor-two;
+		// 	// filter: blur(683px);
+
+		// 	-webkit-filter: blur(683px);
+		// 	-moz-filter: blur(683px);
+		// 	filter: blur(683px);
+
+		// 	top: 580px;
+		// 	left: -424px;
+		// 	z-index: -1;
+		// }
+
+		// &::before {
+		// 	position: absolute;
+		// 	content: "";
+		// 	width: 562px;
+		// 	height: 562px;
+		// 	background-color: $color-decor-three;
+		// 	// filter: blur(683px);
+
+		// 	-webkit-filter: blur(683px);
+		// 	-moz-filter: blur(683px);
+		// 	filter: blur(683px);
+
+		// 	top: 1190px;
+		// 	left: -538px;
+		// 	z-index: -1;
+		// }
+	}
+
 	&__items {
 		padding-top: 46px;
 		// display: flex;
@@ -1167,6 +1254,7 @@ a {
 			background-color: $color-offer;
 			top: 0;
 			left: 0;
+			z-index: 2;
 		}
 
 		&::before {
@@ -1253,6 +1341,9 @@ a {
 // наши дома
 .houses {
 	padding: 20px 0 94px 0;
+
+	z-index: 2;
+	position: relative;
 
 	&__title {
 		margin-bottom: 50px;
@@ -1479,6 +1570,9 @@ a {
 // контакты
 .contactmap {
 	padding: 40px 0 150px;
+
+	z-index: 2;
+	position: relative;
 
 	&__wrapper {
 		display: flex;
