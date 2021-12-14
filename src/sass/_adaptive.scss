@@ -148,6 +148,20 @@
 
 //  1024px - 1199px
 @media screen and (max-width: 1199px) {
+	.technologies {
+		&__wrapper {
+			&::after {
+				opacity: 0.34;
+				-moz-opacity: 0.34;
+				-khtml-opacity: 0.34;
+				top: -400px;
+				left: -350px;
+				height: 1300px;
+				background-size: 1008px 1300px;
+			}
+		}
+	}
+
 	.tabs {
 		&__content {
 			&-item {
@@ -203,6 +217,17 @@
 		&__tabs {
 			.tabs__content {
 				padding: 0;
+			}
+		}
+	}
+
+	.stages {
+		&__wrapper {
+			&::after {
+				background-size: 1200px 1200px;
+				top: 650px;
+				right: -400px;
+				left: auto;
 			}
 		}
 	}
@@ -454,6 +479,11 @@
 	.technologies {
 		&__wrapper {
 			padding-top: 20px;
+
+			&::after {
+				top: 0px;
+				left: -650px;
+			}
 		}
 	}
 
@@ -463,6 +493,12 @@
 
 	.stages {
 		padding-top: 20px;
+
+		&__wrapper {
+			&::after {
+				top: 750px;
+			}
+		}
 	}
 
 	.contactmap {
@@ -489,6 +525,14 @@
 				.projects__slide-text {
 					margin-right: 10px;
 				}
+			}
+		}
+	}
+
+	.stages {
+		&__wrapper {
+			&::after {
+				top: 1000px;
 			}
 		}
 	}
@@ -1029,6 +1073,12 @@
 	}
 
 	.stages {
+		&__wrapper {
+			&::after {
+				display: none;
+			}
+		}
+
 		&__items {
 			grid-template-columns: 1fr;
 			grid-row-gap: 35px;

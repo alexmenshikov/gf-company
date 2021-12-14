@@ -38,6 +38,69 @@ const burger = () => {
 };
 burger();
 
+// let countSlides = 0;
+
+// загрузка карточек с проектами
+const projectsCard = () => {
+	let countSlides = 0;
+	// console.log(`count in ${count}`);
+
+	const projectsSlider = document.querySelector(".projects__slider");
+	const projectsItems = projectsSlider.querySelector(".swiper-wrapper");
+
+	const renderCard = (data) => {
+		data.forEach((item) => {
+			// реструктуризация
+			const { id, title, description, image } = item;
+
+			const div = document.createElement("div");
+
+			div.classList.add("projects__slide");
+			div.classList.add("swiper-slide");
+
+			div.innerHTML = `
+	            <div class="projects__slide-img">
+						<img src="${image}" alt="${title}" />
+					</div>
+					<div class="projects__slide-title">${title}</div>
+					<div class="projects__slide-text">${description}</div>
+	         `;
+
+			// count++;
+			countSlides++;
+			console.log(`count 1 - ${countSlides}`);
+			projectsItems.append(div);
+		});
+
+		console.log(`count 2 - ${countSlides}`);
+		// console.log(`count ${count}`);
+		// return count;
+	};
+	console.log(`count 3 - ${countSlides}`);
+
+	let countSlide = 0;
+	// из файлы *.json достаём данные о блюдах
+	// fetch(`../gf-company/db/sip.json`)
+	fetch(`db/all.json`)
+		.then((response) => response.json())
+		.then((data) => {
+			// console.log(data); // получим массив с объектами
+			countSlide = renderCard(data);
+			// console.log(`test ${countSlide}`);
+			// return countSlide;
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+
+	// return countSlide;
+
+	// console.log(`count out ${count}`);
+	// return count;
+	console.log(`count 4 - ${countSlides}`);
+};
+// projectsCard();
+
 // анимация при скроле
 const eventScroll = () => {
 	// общий класс для всех элементов, которые нужно анимировать
@@ -226,6 +289,11 @@ technologiesAction();
 // 	});
 // };
 
+// const test = () => {
+// 	let test = 4 + 4;
+// 	return test;
+// };
+
 const projectsSlider = () => {
 	const projectsSwiper = new Swiper(".projects__slider", {
 		loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
@@ -296,6 +364,10 @@ const projectsSlider = () => {
 
 	// считаем кол-во слайдов
 	const countProjectsSlides = document.querySelectorAll(".projects__slide");
+	// let ProjectsSlidesLength = projectsCard();
+
+	// ProjectsSlidesLength = countSlides;
+
 	let ProjectsSlidesLength = countProjectsSlides.length;
 
 	// заносим кол-во слайдов в html код

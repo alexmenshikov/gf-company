@@ -674,6 +674,10 @@ a {
 			height: 990px;
 			background-image: url(../images/decor/one.png);
 			background-size: 1008px 990px;
+			opacity: 0.14;
+			-moz-opacity: 0.14;
+			-khtml-opacity: 0.14;
+			background-repeat: no-repeat;
 			// background-color: $color-decor-one;
 			// filter: blur(693px);
 
@@ -938,6 +942,8 @@ a {
 
 .projects {
 	padding: 40px 0 130px 0;
+	z-index: 1;
+	position: relative;
 
 	&__container {
 		width: 100%;
@@ -1109,11 +1115,18 @@ a {
 		&::after {
 			position: absolute;
 			content: "";
-			width: 1085px;
-			height: 1181px;
-			// background-image: url(../images/decor/two.png);
-			// background-size: 1085px 1182px;
-			// opacity: 0.7;
+
+			width: 1200px;
+			height: 1500px;
+			background-image: url(../images/decor/one.png);
+			background-size: 1200px 1500px;
+			background-repeat: no-repeat;
+			opacity: 0.34;
+			-moz-opacity: 0.34;
+			-khtml-opacity: 0.34;
+			top: 300px;
+			left: -550px;
+			z-index: -1;
 
 			// background-color: $color-decor-one;
 			// filter: blur(693px);
@@ -1122,9 +1135,7 @@ a {
 			// -moz-filter: blur(693px);
 			// filter: blur(693px);
 
-			top: 580px;
-			left: -500px;
-			z-index: -1;
+			// top: 580px;
 		}
 		// &::after {
 		// 	position: absolute;
