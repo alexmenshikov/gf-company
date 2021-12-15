@@ -40,8 +40,83 @@ burger();
 
 // let countSlides = 0;
 
-// загрузка карточек с проектами
+// переключение табов в разделе проекты
 const projectsCard = () => {
+	// нашли все табы
+	const jsTrigger = document.querySelectorAll(".tab-projects-btn");
+
+	// находим класс со слайдером
+	const projectsSliderHTML = document.querySelector(".projects__slider");
+	const projectsItems = projectsSliderHTML.querySelector(".swiper-wrapper");
+
+	// текущий слайд и общее кол-во слайдов рядом со скроллом
+	const swiperCurrentNumber = document.querySelector(".projects__scroll-current");
+	// общее количество слайдов
+	const swiperCountNumber = document.querySelector(".projects__scroll-count");
+
+	const renderCard = (data) => {
+		// удаляем все слайды
+		projectsItems.innerHTML = ``;
+
+		// считаем количество слайдов
+		let countSlides = 0;
+
+		// добавляем новые, загруженные из json файла
+		data.forEach((item) => {
+			// реструктуризация
+			const { id, title, description, image } = item;
+
+			const div = document.createElement("div");
+			div.innerHTML = ``;
+
+			div.classList.add("projects__slide");
+			div.classList.add("swiper-slide");
+
+			div.innerHTML = `
+						<div class="projects__slide-img">
+							<img src="${image}" alt="${title}" />
+						</div>
+						<div class="projects__slide-title">${title}</div>
+						<div class="projects__slide-text">${description}</div>
+	         `;
+			// добавляем слайд на страницу
+			projectsItems.append(div);
+			countSlides++;
+		});
+
+		swiperCurrentNumber.innerText = `01`;
+
+		// выводим общее число слайдов
+		if (countSlides < 10) {
+			swiperCountNumber.innerText = `0${countSlides}`;
+		} else {
+			swiperCountNumber.innerText = `${countSlides}`;
+		}
+	};
+
+	let fetches = [];
+	// fetch чтение ===========================================
+	fetches.push(
+		fetch(`db/projects/all.json`)
+			.then((response) => response.json())
+			.then((data) => {
+				// console.log(data); // получим массив с объектами
+				renderCard(data);
+			})
+			.catch((error) => {
+				console.log(error);
+			})
+	);
+	// fetch чтение ===========================================
+
+	Promise.all(fetches).then(() => {
+		projectsSlider();
+	});
+};
+projectsCard();
+
+// загрузка карточек с проектами
+const projectsCardTest = () => {
 	// let countSlides = 0;
 	// console.log(`count in ${count}`);
 
@@ -300,7 +375,7 @@ const projectsTabs = () => {
 			let fetches = [];
 			// fetch чтение ===========================================
 			fetches.push(
-				fetch(`db/${tabName}.json`)
+				fetch(`db/projects/${tabName}.json`)
 					.then((response) => response.json())
 					.then((data) => {
 						// console.log(data); // получим массив с объектами
