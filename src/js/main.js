@@ -42,7 +42,7 @@ burger();
 
 // загрузка карточек с проектами
 const projectsCard = () => {
-	let countSlides = 0;
+	// let countSlides = 0;
 	// console.log(`count in ${count}`);
 
 	const projectsSlider = document.querySelector(".projects__slider");
@@ -67,25 +67,25 @@ const projectsCard = () => {
 	         `;
 
 			// count++;
-			countSlides++;
-			console.log(`count 1 - ${countSlides}`);
+			// countSlides++;
+			// console.log(`count 1 - ${countSlides}`);
 			projectsItems.append(div);
 		});
 
-		console.log(`count 2 - ${countSlides}`);
+		// console.log(`count 2 - ${countSlides}`);
 		// console.log(`count ${count}`);
 		// return count;
 	};
-	console.log(`count 3 - ${countSlides}`);
+	// console.log(`count 3 - ${countSlides}`);
 
-	let countSlide = 0;
+	// let countSlide = 0;
 	// из файлы *.json достаём данные о блюдах
 	// fetch(`../gf-company/db/sip.json`)
 	fetch(`db/all.json`)
 		.then((response) => response.json())
 		.then((data) => {
 			// console.log(data); // получим массив с объектами
-			countSlide = renderCard(data);
+			renderCard(data);
 			// console.log(`test ${countSlide}`);
 			// return countSlide;
 		})
@@ -97,7 +97,7 @@ const projectsCard = () => {
 
 	// console.log(`count out ${count}`);
 	// return count;
-	console.log(`count 4 - ${countSlides}`);
+	// console.log(`count 4 - ${countSlides}`);
 };
 // projectsCard();
 
@@ -193,6 +193,7 @@ const servicesTabs = () => {
 
 servicesTabs();
 
+// переключение табов в разделе технологии / начало
 const technologiesTabs = () => {
 	const jsTrigger = document.querySelectorAll(".js-tab-trigger");
 
@@ -216,9 +217,9 @@ const technologiesTabs = () => {
 		});
 	});
 };
-
 technologiesTabs();
 
+// переключатель в разделе технологии строительства
 const technologiesAction = () => {
 	const plus = document.querySelectorAll(".tabs__content-info");
 
@@ -230,77 +231,110 @@ const technologiesAction = () => {
 		});
 	});
 };
-
 technologiesAction();
 
-// const projectsSlider = () => {
-// 	const projectsSwiper = new Swiper(".projects__slider", {
-// 		loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
-// 		speed: 1000, // скорость
-// 		slidesPerView: 3, // количество слайдов для показа (можно указывать например 2.8 слайда)
-// 		// navigation: {
-// 		// 	// стрелки навигации
-// 		// 	nextEl: ".projects__swiper-next",
-// 		// 	prevEl: ".projects__swiper-prev",
-// 		// },
-// 		watchOverFlow: true, // отключает функционал, если слайдов маньше, чем нужно
-// 		simulateTouch: true, // включение перетаскивания на компьютере
-// 		spaceBetween: 19, // размер отступа, между слайдами
+// переключение табов в разделе проекты
+const projectsTabs = () => {
+	// нашли все табы
+	const jsTrigger = document.querySelectorAll(".tab-projects-btn");
 
-// 		// брейк поинты для разной ширины экрана
-// 		// breakpoints: {
-// 		// 	320: {
-// 		// 		// slidesPerView: 2.2,
-// 		// 	},
+	// находим класс со слайдером
+	const projectsSliderHTML = document.querySelector(".projects__slider");
+	const projectsItems = projectsSliderHTML.querySelector(".swiper-wrapper");
 
-// 		// 	480: {
-// 		// 		// количество слайдов для показа (можно указывать например 2.8 слайда)
+	// текущий слайд и общее кол-во слайдов рядом со скроллом
+	const swiperCurrentNumber = document.querySelector(".projects__scroll-current");
+	// общее количество слайдов
+	const swiperCountNumber = document.querySelector(".projects__scroll-count");
 
-// 		// 		slidesPerView: "auto",
-// 		// 	},
+	// проверяем нажатие на таб
+	jsTrigger.forEach((item) => {
+		item.addEventListener("click", () => {
+			// projectsSliderHTML.id = `${tabName}`;
 
-// 		// 	// ширина >= 1230px
-// 		// 	1300: {
-// 		// 		// количество слайдов для показа (можно указывать например 2.8 слайда)
-// 		// 		slidesPerView: 3,
+			// забираем у таба, путь к json файлу
+			let tabName = item.getAttribute("data-file");
 
-// 		// 		navigation: {
-// 		// 			nextEl: ".projects__swiper-next",
-// 		// 			prevEl: ".projects__swiper-prev",
-// 		// 		},
-// 		// 	},
-// 		// },
+			const renderCard = (data) => {
+				// удаляем все слайды
+				projectsItems.innerHTML = ``;
 
-// 		// pagination: {
-// 		// 	el: ".projects__swiper-pagination",
-// 		// 	type: "progressbar",
-// 		// },
+				// считаем количество слайдов
+				let countSlides = 0;
 
-// 		// scrollbar: {
-// 		// 	// el: ".projects__swiper-scroll",
-// 		// 	el: ".swiper-scrollbar",
+				// добавляем новые, загруженные из json файла
+				data.forEach((item) => {
+					// реструктуризация
+					const { id, title, description, image } = item;
 
-// 		// 	// возможность перетаскивания скролл
-// 		// 	draggable: true,
+					const div = document.createElement("div");
+					div.innerHTML = ``;
 
-// 		// 	// размер ползунка
-// 		// 	dragSize: 80,
-// 		// },
-// 	});
-// };
+					div.classList.add("projects__slide");
+					div.classList.add("swiper-slide");
 
-// const test = () => {
-// 	let test = 4 + 4;
-// 	return test;
-// };
+					div.innerHTML = `
+						<div class="projects__slide-img">
+							<img src="${image}" alt="${title}" />
+						</div>
+						<div class="projects__slide-title">${title}</div>
+						<div class="projects__slide-text">${description}</div>
+	         `;
+					// добавляем слайд на страницу
+					projectsItems.append(div);
+					countSlides++;
+				});
 
+				swiperCurrentNumber.innerText = `01`;
+
+				// выводим общее число слайдов
+				if (countSlides < 10) {
+					swiperCountNumber.innerText = `0${countSlides}`;
+				} else {
+					swiperCountNumber.innerText = `${countSlides}`;
+				}
+			};
+
+			// console.log(`Вкладка ${tabName}`);
+
+			let fetches = [];
+			// fetch чтение ===========================================
+			fetches.push(
+				fetch(`db/${tabName}.json`)
+					.then((response) => response.json())
+					.then((data) => {
+						// console.log(data); // получим массив с объектами
+						renderCard(data);
+					})
+					.catch((error) => {
+						console.log(error);
+					})
+			);
+			// fetch чтение ===========================================
+
+			// переключение вкладок
+			document.querySelectorAll(".tab-projects-btn.active").forEach((item) => {
+				item.classList.remove("active");
+			});
+
+			item.classList.add("active");
+
+			Promise.all(fetches).then(() => {
+				projectsSlider();
+			});
+		});
+	});
+};
+projectsTabs();
+
+// слайдер проектов
 const projectsSlider = () => {
 	const projectsSwiper = new Swiper(".projects__slider", {
 		loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
 		speed: 1000, // скорость
 		// slidesPerView: 3, // количество слайдов для показа (можно указывать например 2.8 слайда)
 		spaceBetween: 19, // размер отступа, между слайдами
-		watchOverFlow: true, // отключает функционал, если слайдов маньше, чем нужно
+		watchOverFlow: true, // отключает функционал, если слайдов меньше, чем нужно
 		simulateTouch: true, // включение перетаскивания на компьютере
 		scrollbar: {
 			el: ".projects__scroll-scrollbar",
@@ -360,27 +394,21 @@ const projectsSlider = () => {
 
 	// текущий слайд и общее кол-во слайдов рядом со скроллом
 	const swiperCurrentNumber = document.querySelector(".projects__scroll-current");
-	const swiperCountNumber = document.querySelector(".projects__scroll-count");
-
-	// считаем кол-во слайдов
-	const countProjectsSlides = document.querySelectorAll(".projects__slide");
-	// let ProjectsSlidesLength = projectsCard();
-
-	// ProjectsSlidesLength = countSlides;
-
-	let ProjectsSlidesLength = countProjectsSlides.length;
-
-	// заносим кол-во слайдов в html код
-	swiperCountNumber.innerText = `0${ProjectsSlidesLength}`;
 
 	projectsSwiper.on("slideChange", () => {
 		let index = projectsSwiper.realIndex + 1;
 
 		// заносим текущий слайд в html код
-		swiperCurrentNumber.innerText = `0${index}`;
+		if (index < 10) {
+			swiperCurrentNumber.innerText = `0${index}`;
+		} else {
+			swiperCurrentNumber.innerText = `${index}`;
+		}
 	});
 };
-projectsSlider();
+// projectsSlider();
+
+const houseTabs = () => {};
 
 // слайдер наши готовые дома
 const houseSlider = () => {
@@ -442,10 +470,6 @@ const houseSlider = () => {
 };
 houseSlider();
 
-// const scrollCount = document.querySelector(".projects__scroll-count");
-// scrollCount.classList.remove("swiper-pagination-custom");
-// scrollCount.classList.remove("swiper-pagination-horizontal");
-
 // отправка заявки на специальное предложение
 const offer = () => {
 	const name = document.getElementById("offer_form_name");
@@ -468,6 +492,7 @@ const offer = () => {
 };
 offer();
 
+// форма валидации
 const validationForm = () => {
 	const name = document.getElementById("modal_form_name");
 	const phone = document.getElementById("modal_form_phone");
