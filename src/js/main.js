@@ -219,8 +219,6 @@ const projectsTabs = () => {
 				countSlides++;
 			});
 
-			// swiperCurrentNumber.innerText = `01`;
-
 			// выводим общее число слайдов
 			if (countSlides < 10) {
 				swiperCountNumber.innerText = `0${countSlides}`;
@@ -279,8 +277,6 @@ const projectsTabs = () => {
 	});
 };
 projectsTabs();
-
-// let flagPresenceSlider = true;
 
 // создали переменную для слайдера
 let projectsSwiper;
@@ -377,69 +373,7 @@ const projectsSlider = () => {
 	}
 };
 
-// первая загрузка табов с готовыми домами
-// const houseCardStart = () => {
-// 	// находим класс со слайдером
-// 	const housesSliderHTML = document.querySelector(".houses__gallery-item");
-// 	const housesItems = housesSliderHTML.querySelector(".swiper-wrapper");
-
-// 	const renderCard = (data) => {
-// 		// удаляем все слайды
-// 		housesItems.innerHTML = ``;
-
-// 		// считаем количество слайдов
-// 		let countSlides = 0;
-
-// 		// добавляем новые, загруженные из json файла
-// 		data.forEach((item) => {
-// 			// реструктуризация
-// 			const { title, image } = item;
-
-// 			const div = document.createElement("div");
-// 			div.innerHTML = ``;
-
-// 			div.classList.add("houses__gallery-slide");
-// 			div.classList.add("swiper-slide");
-
-// 			div.innerHTML = `
-// 						<img src="${image}" alt="${title}" />
-// 			   `;
-// 			// добавляем слайд на страницу
-// 			housesItems.append(div);
-// 			countSlides++;
-// 		});
-
-// 		// swiperCurrentNumber.innerText = `01`;
-
-// 		// выводим общее число слайдов
-// 		// if (countSlides < 10) {
-// 		// 	swiperCountNumber.innerText = `0${countSlides}`;
-// 		// } else {
-// 		// 	swiperCountNumber.innerText = `${countSlides}`;
-// 		// }
-// 	};
-
-// 	let fetches = [];
-// 	fetches.push(
-// 		fetch(`db/house/all.json`)
-// 			.then((response) => response.json())
-// 			.then((data) => {
-// 				// console.log(data); // получим массив с объектами
-// 				renderCard(data);
-// 			})
-// 			.catch((error) => {
-// 				console.log(error);
-// 			})
-// 	);
-
-// 	Promise.all(fetches).then(() => {
-// 		houseSlider();
-// 	});
-// };
-// houseCardStart();
-
 // табы наши готовые дома
-
 const houseTabs = () => {
 	// нашли все табы
 	const jsTrigger = document.querySelectorAll(".house-tab");
@@ -455,71 +389,91 @@ const houseTabs = () => {
 
 	const swiperPaginationActive = document.querySelector(".swiper-pagination-bullet-active");
 
+	// создаём слайдер
+	const createSlider = (item) => {
+		// забираем у таба, путь к json файлу
+		let nameFile = item.getAttribute("data-file");
+
+		// создание слайда
+		const renderCard = (data) => {
+			// удаляем все слайды
+			housesItems.innerHTML = ``;
+
+			// считаем количество слайдов
+			let countSlides = 0;
+
+			// добавляем новые, загруженные из json файла
+			data.forEach((item) => {
+				// реструктуризация
+				const { title, image } = item;
+
+				const div = document.createElement("div");
+				div.innerHTML = ``;
+
+				div.classList.add("houses__gallery-slide");
+				div.classList.add("swiper-slide");
+
+				div.innerHTML = `
+						<img src="${image}" alt="${title}" />
+	         `;
+				// добавляем слайд на страницу
+				housesItems.append(div);
+				countSlides++;
+			});
+
+			// выводим общее число слайдов
+			if (countSlides < 10) {
+				swiperCountNumber.innerText = `0${countSlides}`;
+			} else {
+				swiperCountNumber.innerText = `${countSlides}`;
+			}
+		};
+
+		// читаем данные из json файла
+		let fetches = [];
+		fetches.push(
+			fetch(`db/house/${nameFile}.json`)
+				.then((response) => response.json())
+				.then((data) => {
+					// console.log(data); // получим массив с объектами
+					renderCard(data);
+				})
+				.catch((error) => {
+					console.log(error);
+				})
+		);
+
+		Promise.all(fetches).then(() => {
+			houseSlider();
+		});
+	};
+
+	// флаг для проверки первого запуска
+	let flagFirstStart = true;
+
+	if (flagFirstStart) {
+		// находим таб с включенным active
+		const itemActive = document.querySelector(".house-tab.active");
+
+		flagFirstStart = false;
+
+		// создаём слайдер
+		createSlider(itemActive);
+	}
+
 	// проверяем нажатие на таб
 	jsTrigger.forEach((item) => {
 		item.addEventListener("click", () => {
 			const swiperNotification = housesSliderHTML.querySelectorAll(".swiper-notification");
 			swiperNotification[0].remove();
 
-			const pagination = document.querySelector(".houses__gallery-pagination");
-			pagination.innerHTML = ``;
-
 			// забираем у таба, номер вкладки
 			let tabName = item.getAttribute("data-tab");
 
 			let tabContent = document.querySelector('.houses__content-item[data-tab="' + tabName + '"]');
 
-			// забираем у таба, путь к json файлу
-			let nameFile = item.getAttribute("data-file");
-
-			const renderCard = (data) => {
-				// удаляем все слайды
-				housesItems.innerHTML = ``;
-
-				// считаем количество слайдов
-				let countSlides = 0;
-
-				// добавляем новые, загруженные из json файла
-				data.forEach((item) => {
-					// реструктуризация
-					const { title, image } = item;
-
-					const div = document.createElement("div");
-					div.innerHTML = ``;
-
-					div.classList.add("houses__gallery-slide");
-					div.classList.add("swiper-slide");
-
-					div.innerHTML = `
-						<img src="${image}" alt="${title}" />
-			   `;
-					// добавляем слайд на страницу
-					housesItems.append(div);
-					countSlides++;
-				});
-
-				swiperCurrentNumber.innerText = `01`;
-
-				// выводим общее число слайдов
-				// if (countSlides < 10) {
-				// 	swiperCountNumber.innerText = `0${countSlides}`;
-				// } else {
-				// 	swiperCountNumber.innerText = `${countSlides}`;
-				// }
-			};
-
-			let fetches = [];
-			fetches.push(
-				fetch(`db/house/${nameFile}.json`)
-					.then((response) => response.json())
-					.then((data) => {
-						// console.log(data); // получим массив с объектами
-						renderCard(data);
-					})
-					.catch((error) => {
-						console.log(error);
-					})
-			);
+			// создаём слайдер
+			createSlider(item);
 
 			// переключение вкладок
 			document.querySelectorAll(".house-tab.active").forEach((item) => {
@@ -533,74 +487,89 @@ const houseTabs = () => {
 			});
 
 			tabContent.classList.add("active");
-
-			Promise.all(fetches).then(() => {
-				houseSlider();
-			});
 		});
 	});
 };
 houseTabs();
 
+// создали переменную для слайдера
+let houseSwiper;
 // слайдер наши готовые дома
 const houseSlider = () => {
-	const houseSwiper = new Swiper(".house-gallery", {
-		// direction: "vertical",
-		loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
-		speed: 1000, // скорость
-		simulateTouch: true, // включение перетаскивания на компьютере
-		pagination: {
-			el: ".houses__gallery-pagination",
-			clickable: true,
-			renderBullet: function (index, className) {
-				return '<span class="' + className + '">0' + (index + 1) + "</span>";
-			},
-		},
-		navigation: {
-			prevEl: ".houses__gallery-prev",
-			nextEl: ".houses__gallery-next",
-		},
-
-		breakpoints: {
-			// ширина >= 320px
-			300: {
-				spaceBetween: 16, // размер отступа, между слайдами
-				slidesPerView: 1.4,
-				direction: "horizontal",
-				scrollbar: {
-					el: ".houses__scroll-scrollbar",
-					dragSize: 80, // размер бегунка
-					draggable: true, // возможность перетаскивания скролл
+	// инициализация слайдера
+	const sliderInit = () => {
+		houseSwiper = new Swiper(".house-gallery", {
+			loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
+			speed: 1000, // скорость
+			simulateTouch: true, // включение перетаскивания на компьютере
+			pagination: {
+				el: ".houses__gallery-pagination",
+				clickable: true,
+				renderBullet: function (index, className) {
+					return '<span class="' + className + '">0' + (index + 1) + "</span>";
 				},
 			},
-
-			// ширина >= 660px
-			660: {
-				slidesPerView: 1,
-				direction: "vertical",
+			navigation: {
+				prevEl: ".houses__gallery-prev",
+				nextEl: ".houses__gallery-next",
 			},
-		},
-	});
 
-	// текущий слайд и общее кол-во слайдов рядом со скроллом
-	const swiperCurrentNumber = document.querySelector(".houses__scroll-current");
-	const swiperCountNumber = document.querySelector(".houses__scroll-count");
+			breakpoints: {
+				// ширина >= 320px
+				300: {
+					spaceBetween: 16, // размер отступа, между слайдами
+					slidesPerView: 1.4,
+					direction: "horizontal",
+					scrollbar: {
+						el: ".houses__scroll-scrollbar",
+						dragSize: 80, // размер бегунка
+						draggable: true, // возможность перетаскивания скролл
+					},
+				},
 
-	// считаем кол-во слайдов
-	const countProjectsSlides = document.querySelectorAll(".houses__gallery-slide");
-	let ProjectsSlidesLength = countProjectsSlides.length;
+				// ширина >= 660px
+				660: {
+					slidesPerView: 1,
+					direction: "vertical",
+				},
+			},
+		});
 
-	// заносим кол-во слайдов в html код
-	swiperCountNumber.innerText = `0${ProjectsSlidesLength}`;
+		// текущий слайд
+		const swiperCurrentNumber = document.querySelector(".houses__scroll-current");
+		swiperCurrentNumber.innerHTML = "01";
 
-	houseSwiper.on("slideChange", () => {
-		let index = houseSwiper.realIndex + 1;
+		// общее кол-во слайдов рядом со скроллом
+		const swiperCountNumber = document.querySelector(".houses__scroll-count");
 
-		// заносим текущий слайд в html код
-		swiperCurrentNumber.innerText = `0${index}`;
-	});
+		// считаем кол-во слайдов
+		const countProjectsSlides = document.querySelectorAll(".houses__gallery-slide");
+		let ProjectsSlidesLength = countProjectsSlides.length;
+
+		// заносим кол-во слайдов в html код
+		swiperCountNumber.innerText = `0${ProjectsSlidesLength}`;
+
+		houseSwiper.on("slideChange", () => {
+			let index = houseSwiper.realIndex + 1;
+
+			// заносим текущий слайд в html код
+			if (index < 10) {
+				swiperCurrentNumber.innerText = `0${index}`;
+			} else {
+				swiperCurrentNumber.innerText = `${index}`;
+			}
+		});
+	};
+
+	if (!houseSwiper) {
+		// создаём слайдер, первый раз
+		sliderInit();
+	} else {
+		// слайдер существовал мы его удаляем и создаём новый
+		houseSwiper.destroy();
+		sliderInit();
+	}
 };
-// houseSlider();
 
 // отправка заявки на специальное предложение
 const offer = () => {
