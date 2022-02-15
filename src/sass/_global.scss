@@ -1345,6 +1345,9 @@ a {
 
 // наши дома
 .houses {
+	// временно отключили блок
+	display: none;
+
 	padding: 20px 0 94px 0;
 
 	z-index: 2;
@@ -1798,6 +1801,8 @@ a {
 		margin-top: 39px;
 		grid-row: 2 / 3;
 		position: relative;
+		width: 191px;
+		margin-left: auto;
 
 		&-item {
 			position: absolute;
