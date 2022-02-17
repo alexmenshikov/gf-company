@@ -4,19 +4,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Получаем параметры, посланные с javascript
     $name = $_POST['name'];
-    $count = $_POST['count'];
     $phone = $_POST['phone'];
-    $time = $_POST['time'];
 
     // создаем переменную с содержанием письма
-    $content = $name . ' оставил заявку на бронирование столика для ' . $count . ' человек в ' . $time . '. Его телефон: ' . $phone;
+    $content = $name . ' оставил заявку. Номер телефона: ' . $phone;
 
     // Для корректной кодировки
     $headers = 'MIME-Version: 1.0'. "\r\n";
     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
     // Первый параметр - кому отправляем письмо, второй - тема письма, третий - содержание
-    $success = mail("admin@burgerclub.com", 'Запрос на бронирование столика', $content, $headers);
+    $success = mail("gf_company@mail.ru", 'Заявка с сайта GF Company', $content, $headers);
 
     if ($success) {
         // Отдаем 200 код ответа на http запрос

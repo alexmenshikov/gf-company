@@ -373,206 +373,10 @@ const projectsSlider = () => {
 	}
 };
 
-// табы наши готовые дома
-const houseTabs = () => {
-	// нашли все табы
-	const jsTrigger = document.querySelectorAll(".house-tab");
-
-	// находим класс со слайдером
-	const housesSliderHTML = document.querySelector(".houses__gallery-item");
-	const housesItems = housesSliderHTML.querySelector(".swiper-wrapper");
-
-	// текущий слайд и общее кол-во слайдов рядом со скроллом
-	const swiperCurrentNumber = document.querySelector(".houses__scroll-current");
-	// общее количество слайдов
-	const swiperCountNumber = document.querySelector(".houses__scroll-count");
-
-	const swiperPaginationActive = document.querySelector(".swiper-pagination-bullet-active");
-
-	// создаём слайдер
-	const createSlider = (item) => {
-		// забираем у таба, путь к json файлу
-		let nameFile = item.getAttribute("data-file");
-
-		// создание слайда
-		const renderCard = (data) => {
-			// удаляем все слайды
-			housesItems.innerHTML = ``;
-
-			// считаем количество слайдов
-			let countSlides = 0;
-
-			// добавляем новые, загруженные из json файла
-			data.forEach((item) => {
-				// реструктуризация
-				const { title, image } = item;
-
-				const div = document.createElement("div");
-				div.innerHTML = ``;
-
-				div.classList.add("houses__gallery-slide");
-				div.classList.add("swiper-slide");
-
-				div.innerHTML = `
-						<img src="${image}" alt="${title}" />
-	         `;
-				// добавляем слайд на страницу
-				housesItems.append(div);
-				countSlides++;
-			});
-
-			// выводим общее число слайдов
-			if (countSlides < 10) {
-				swiperCountNumber.innerText = `0${countSlides}`;
-			} else {
-				swiperCountNumber.innerText = `${countSlides}`;
-			}
-		};
-
-		// читаем данные из json файла
-		let fetches = [];
-		fetches.push(
-			fetch(`db/house/${nameFile}.json`)
-				.then((response) => response.json())
-				.then((data) => {
-					// console.log(data); // получим массив с объектами
-					renderCard(data);
-				})
-				.catch((error) => {
-					console.log(error);
-				})
-		);
-
-		Promise.all(fetches).then(() => {
-			houseSlider();
-		});
-	};
-
-	// флаг для проверки первого запуска
-	let flagFirstStart = true;
-
-	if (flagFirstStart) {
-		// находим таб с включенным active
-		const itemActive = document.querySelector(".house-tab.active");
-
-		flagFirstStart = false;
-
-		// создаём слайдер
-		createSlider(itemActive);
-	}
-
-	// проверяем нажатие на таб
-	jsTrigger.forEach((item) => {
-		item.addEventListener("click", () => {
-			const swiperNotification = housesSliderHTML.querySelectorAll(".swiper-notification");
-			swiperNotification[0].remove();
-
-			// забираем у таба, номер вкладки
-			let tabName = item.getAttribute("data-tab");
-
-			let tabContent = document.querySelector('.houses__content-item[data-tab="' + tabName + '"]');
-
-			// создаём слайдер
-			createSlider(item);
-
-			// переключение вкладок
-			document.querySelectorAll(".house-tab.active").forEach((item) => {
-				item.classList.remove("active");
-			});
-
-			item.classList.add("active");
-
-			document.querySelectorAll(".house-content.active").forEach((item) => {
-				item.classList.remove("active");
-			});
-
-			tabContent.classList.add("active");
-		});
-	});
-};
-houseTabs();
-
-// создали переменную для слайдера
-let houseSwiper;
-// слайдер наши готовые дома
-const houseSlider = () => {
-	// инициализация слайдера
-	const sliderInit = () => {
-		houseSwiper = new Swiper(".house-gallery", {
-			loop: false, // бесконечный слайдер отключаем, так как вместе со скроллом, не совместимы
-			speed: 1000, // скорость
-			simulateTouch: true, // включение перетаскивания на компьютере
-			pagination: {
-				el: ".houses__gallery-pagination",
-				clickable: true,
-				renderBullet: function (index, className) {
-					return '<span class="' + className + '">0' + (index + 1) + "</span>";
-				},
-			},
-			navigation: {
-				prevEl: ".houses__gallery-prev",
-				nextEl: ".houses__gallery-next",
-			},
-
-			breakpoints: {
-				// ширина >= 320px
-				300: {
-					spaceBetween: 16, // размер отступа, между слайдами
-					slidesPerView: 1.4,
-					direction: "horizontal",
-					scrollbar: {
-						el: ".houses__scroll-scrollbar",
-						dragSize: 80, // размер бегунка
-						draggable: true, // возможность перетаскивания скролл
-					},
-				},
-
-				// ширина >= 660px
-				660: {
-					slidesPerView: 1,
-					direction: "vertical",
-				},
-			},
-		});
-
-		// текущий слайд
-		const swiperCurrentNumber = document.querySelector(".houses__scroll-current");
-		swiperCurrentNumber.innerHTML = "01";
-
-		// общее кол-во слайдов рядом со скроллом
-		const swiperCountNumber = document.querySelector(".houses__scroll-count");
-
-		// считаем кол-во слайдов
-		const countProjectsSlides = document.querySelectorAll(".houses__gallery-slide");
-		let ProjectsSlidesLength = countProjectsSlides.length;
-
-		// заносим кол-во слайдов в html код
-		swiperCountNumber.innerText = `0${ProjectsSlidesLength}`;
-
-		houseSwiper.on("slideChange", () => {
-			let index = houseSwiper.realIndex + 1;
-
-			// заносим текущий слайд в html код
-			if (index < 10) {
-				swiperCurrentNumber.innerText = `0${index}`;
-			} else {
-				swiperCurrentNumber.innerText = `${index}`;
-			}
-		});
-	};
-
-	if (!houseSwiper) {
-		// создаём слайдер, первый раз
-		sliderInit();
-	} else {
-		// слайдер существовал мы его удаляем и создаём новый
-		houseSwiper.destroy();
-		sliderInit();
-	}
-};
-
 // отправка заявки на специальное предложение
 const offer = () => {
+	const offerForm = document.querySelector(".offer__form");
+	const formSent = document.querySelector(".offer__sent");
 	const name = document.getElementById("offer_form_name");
 	const phone = document.getElementById("offer_form_phone");
 
@@ -589,6 +393,11 @@ const offer = () => {
 		if (!phone.value) {
 			phone.classList.add("active");
 		}
+
+		if(name.value && phone.value) {
+			offerForm.style.display = "none";
+			formSent.style.display = "flex";
+		}
 	});
 };
 offer();
@@ -601,7 +410,7 @@ const validationForm = () => {
 	const btn = document.querySelector(".modal__form-btn");
 
 	btn.addEventListener("click", () => {
-		console.log("press");
+		// console.log("press");
 
 		name.classList.remove("error");
 		phone.classList.remove("error");
@@ -615,7 +424,7 @@ const validationForm = () => {
 			phone.classList.add("error");
 		}
 
-		console.log(agree.querySelector(".hidden-checkbox").checked);
+		// console.log(agree.querySelector(".hidden-checkbox").checked);
 
 		if (!agree.querySelector(".hidden-checkbox").checked) {
 			agree.querySelector(".checkbox").classList.add("error");
