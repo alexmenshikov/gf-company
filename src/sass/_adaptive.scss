@@ -69,11 +69,15 @@
 
 		&__item {
 			&-one {
+				cursor: pointer;
+
 				&.active {
 					color: $color-cream-three;
 				}
 			}
 			&-two {
+				cursor: pointer;
+
 				&.active {
 					color: $color-cream-three;
 				}
