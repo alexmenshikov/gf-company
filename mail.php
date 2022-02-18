@@ -14,7 +14,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
 
     // Первый параметр - кому отправляем письмо, второй - тема письма, третий - содержание
-    $success = mail("gf_company@mail.ru", 'Заявка с сайта GF Company', $content, $headers);
+//    $success = mail("gf_company@mail.ru", 'Заявка с сайта GF Company', $content, $headers);
+    $success = mail("79039025435@ya.ru", 'Заявка с сайта GF Company', $content, $headers);
 
     if ($success) {
         // Отдаем 200 код ответа на http запрос

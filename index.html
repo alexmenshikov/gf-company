@@ -16,6 +16,7 @@
 
 		<!-- script -->
 		<script src="https://unpkg.com/swiper@8/swiper-bundle.min.js" defer></script>
+		<script src="js/jquery-3.6.0.min.js" defer></script>
 		<script src="js/main.min.js" defer></script>
 	</head>
 
@@ -125,6 +126,7 @@
 									<span class="btn__text">Оставить заявку</span>
 								</button>
 							</div>
+							<div class="header__swiper-pagination"></div>
 						</div>
 					</div>
 
@@ -140,7 +142,7 @@
 								<img src="images/header-slider/slide-3.jpg" alt="slide-3" />
 							</div>
 						</div>
-						<div class="header__swiper-pagination"></div>
+<!--						<div class="header__swiper-pagination"></div>-->
 					</div>
 
 					<div class="mobile">
@@ -679,7 +681,7 @@
 							<h3 class="offer__title title-h3">Специальное предложение на кредитование</h3>
 							<div class="offer__description">Удобный ипотечный кредит на индивидуальное строительство жилого дома по ставке от <span>6,5 %</span> в рублях!</div>
 
-							<form class="offer__form" action="" method="GET">
+							<form class="offer__form" action="" method="POST">
 								<input class="offer__form-input" id="offer_form_name" name="offer_form_name" type="text" placeholder="Ваше имя" />
 								<input class="offer__form-input" id="offer_form_phone" name="offer_form_phone" type="tel" placeholder="Ваш телефон" />
 								<button class="offer__form-btn btn" type="button">
@@ -862,7 +864,7 @@
 
 				<div class="modal__title">Оставьте заявку и мы перезвоним вам в ближайшее время</div>
 
-				<form class="modal__form" action="" method="GET">
+				<form class="modal__form" action="" method="POST">
 					<input class="modal__form-input" id="modal_form_name" name="modal_form_name" type="text" placeholder="Ваше имя" />
 
 					<input class="modal__form-input" id="modal_form_phone" name="modal_form_phone" type="tel" placeholder="Ваш телефон" />

@@ -404,6 +404,9 @@ offer();
 
 // форма валидации
 const validationForm = () => {
+	const modalForm = document.querySelector(".modal__form");
+	const modalSent = document.querySelector(".modal__sent");
+
 	const name = document.getElementById("modal_form_name");
 	const phone = document.getElementById("modal_form_phone");
 	const agree = document.querySelector(".modal__form-checkbox");
@@ -424,10 +427,27 @@ const validationForm = () => {
 			phone.classList.add("error");
 		}
 
-		// console.log(agree.querySelector(".hidden-checkbox").checked);
-
 		if (!agree.querySelector(".hidden-checkbox").checked) {
 			agree.querySelector(".checkbox").classList.add("error");
+		}
+
+		if(name.value && phone.value && (agree.querySelector(".hidden-checkbox").checked)) {
+			$.ajax({
+				method: 'POST',
+				url: 'mail.php',
+				data: {
+					name: name.value,
+					phone: phone.value
+				}
+			})
+				.done(function (response) {
+					// alert(response);
+					modalForm.style.display = "none";
+					modalSent.style.display = "flex";
+				})
+				.fail(function (response) {
+					// alert(response);
+				})
 		}
 	});
 };

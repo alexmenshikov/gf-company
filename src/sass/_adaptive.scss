@@ -1,8 +1,18 @@
-//@media screen and (max-height: 960px) and (orientation:landscape) {
-//	.header {
-//		min-height: 960px;
-//	}
-//}
+@media screen and (max-height: 890px) and (orientation:landscape) {
+	.header {
+		&__content {
+			height: 100%;
+		}
+	}
+}
+
+@media screen and (min-width: 750px) and (orientation:landscape) {
+	.mobile {
+		&__phone {
+			padding: 38px 0 40px 60px;
+		}
+	}
+}
 
 @media screen and (max-width: 1310px) {
 	.offer {
@@ -104,7 +114,6 @@
 	}
 }
 
-//  1200px - 1229px
 @media screen and (max-width: 1229px) {
 	.stages {
 		&__item {
@@ -149,7 +158,6 @@
 	}
 }
 
-//  1024px - 1199px
 @media screen and (max-width: 1199px) {
 	.technologies {
 		&__wrapper {
@@ -406,10 +414,12 @@
 	}
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1023px) and (min-height: 890px) and (orientation:landscape) {
+	&__content {
+		height: calc(100vh - 130px - 58px);
+	}
 }
 
-//  841px - 1023px
 @media screen and (max-width: 1023px) {
 	.header {
 		&__mobile {
@@ -555,7 +565,6 @@
 	}
 }
 
-// 769px - 840px
 @media screen and (max-width: 840px) {
 	.services {
 		&__house {
@@ -849,6 +858,8 @@
 		}
 
 		&__content {
+			height: 100%;
+
 			&-title {
 				font-size: 28px;
 				line-height: 34px;
@@ -1555,7 +1566,6 @@
 	}
 }
 
-//  480px - 579px
 @media screen and (max-width: 579px) {
 	.services {
 		&__house {
@@ -1574,7 +1584,6 @@
 	}
 }
 
-//  480px - 499px
 @media screen and (max-width: 520px) {
 	.marker {
 		&__one {
@@ -1607,11 +1616,6 @@
 	}
 }
 
-//  480px - 499px
-@media screen and (max-width: 499px) {
-}
-
-//  320px - 479px
 @media screen and (max-width: 479px) {
 	.contactmap {
 		&__map {
@@ -1634,54 +1638,6 @@
 	}
 }
 
-// адаптив для высоты
-//  681px - 880px
-//@media screen and (max-height: 880px) {
-//    .header {
-//        height: 880px;
-//
-//        &__content {
-//            padding-top: 60px;
-//        }
-//    }
-//
-//    .swiper {
-//        height: 880px;
-//    }
-//
-//    .swiper-slide img {
-//        height: 880px;
-//    }
-//}
-
-//  320px - 680px
-//@media screen and (max-height: 680px) {
-//    .header {
-//        height: 680px;
-//
-//        &__content {
-//            padding-top: 20px;
-//
-//            &-title {
-//                margin-bottom: 20px;
-//            }
-//
-//            &-subtitle {
-//                margin-bottom: 25px;
-//            }
-//        }
-//    }
-//
-//    .swiper {
-//        height: 680px;
-//    }
-//
-//    .swiper-slide img {
-//        height: 680px;
-//    }
-//}
-
-//
 @media (max-width: 376px) {
 	.services {
 		&__house {
@@ -1690,25 +1646,18 @@
 		}
 	}
 
-	// .house {
-	// 	height: 200px;
-	// }
-
 	.houses {
 		&__gallery {
 			height: 178px;
 		}
 	}
+}
 
-	//    .header {
-	//        height: 100vh;
-	//    }
-	//
-	//    .swiper {
-	//        height: 100vh;
-	//    }
-	//
-	//    .swiper-slide img {
-	//        height: 100vh;
-	//    }
+@media screen and (max-width: 1023px) and (min-width: 660px) and (orientation:portrait) {
+	.header {
+		&__content {
+			padding-top: 150px;
+			height: calc(100vh - 130px - 150px);
+		}
+	}
 }
