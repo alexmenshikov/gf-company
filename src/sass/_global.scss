@@ -1720,4 +1720,9 @@ a {
 			height: 80px;
 		}
 	}
+
+	&__sent {
+		display: none;
+		color: $color-cream-three;
+	}
 }
